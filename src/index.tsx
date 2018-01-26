@@ -24,13 +24,13 @@ declare var process: any;
 
 const App = () => (
   <div className="wrapper">
+    <Navbar />
     <div className="page-content">
-      <Navbar />
       <Switch>
         <Route exact path="/sign_up" component={SignUpForm} />
       </Switch>
-      <Footer />
     </div>
+    <Footer />
   </div>
 );
 
