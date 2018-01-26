@@ -4,7 +4,7 @@ import './styles/index.less';
 
 const Footer = ({}) => (
   <footer className="footer" role="navigation" aria-label="main navigation">
-    <div className="navbar-brand">{/* <!-- navbar items, navbar burger... --> */}</div>
+    <p>Gstream Inc. all rghts reserved,2018</p>
   </footer>
 );
 
