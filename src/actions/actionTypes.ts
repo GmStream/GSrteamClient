@@ -1,2 +1,11 @@
 export const USER_SIGN_UP = 'USR_SIGNUP';
 export type USER_SIGN_UP = typeof USER_SIGN_UP;
+
+export const CHECK_USER_EMAIL = 'CHECK_USER_EMAIL';
+export type CHECK_USER_EMAIL = typeof CHECK_USER_EMAIL;
+
+export const CHECK_CHANNEL_NAME = 'CHECK_CHANNEL_NAME';
+export type CHECK_CHANNEL_NAME = typeof CHECK_CHANNEL_NAME;
+
+export const CHECK_USERNAME = 'CHECK_USERNAME';
+export type CHECK_USERNAME = typeof CHECK_USERNAME;
