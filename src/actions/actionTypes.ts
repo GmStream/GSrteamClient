@@ -1,11 +1,17 @@
 export const USER_SIGN_UP = 'USR_SIGNUP';
 export type USER_SIGN_UP = typeof USER_SIGN_UP;
 
-export const CHECK_USER_EMAIL = 'CHECK_USER_EMAIL';
-export type CHECK_USER_EMAIL = typeof CHECK_USER_EMAIL;
+export const SIGN_UP_ERROR = 'SIGN_UP_ERROR';
+export type SIGN_UP_ERROR = typeof SIGN_UP_ERROR;
 
-export const CHECK_CHANNEL_NAME = 'CHECK_CHANNEL_NAME';
-export type CHECK_CHANNEL_NAME = typeof CHECK_CHANNEL_NAME;
+export const SIGN_IN_ERROR = 'SIGN_IN_ERROR';
+export type SIGN_IN_ERROR = typeof SIGN_IN_ERROR;
 
-export const CHECK_USERNAME = 'CHECK_USERNAME';
-export type CHECK_USERNAME = typeof CHECK_USERNAME;
+export const USER_SIGN_IN = 'USER_SIGN_IN';
+export type USER_SIGN_IN = typeof USER_SIGN_IN;
+
+export const SIGN_IN_SUCCES = 'SIGN_IN_SUCCES';
+export type SIGN_IN_SUCCES = typeof SIGN_IN_SUCCES;
+
+export const SIGN_UP_SUCCES = 'SIGN_UP_SUCCES';
+export type SIGN_UP_SUCCES = typeof SIGN_UP_SUCCES;

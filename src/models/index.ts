@@ -1,10 +1,6 @@
-export interface ISignUpForm {
-  error?: any;
-  email?: string;
-  channelName?: string;
-  username?: string;
-  password?: string;
-  step?: number;
+export interface IForm {
+  state?: boolean;
+  message?: string;
 }
 
-export type SignUpInitialState = ISignUpForm;
+export type formStateInitial = IForm;
