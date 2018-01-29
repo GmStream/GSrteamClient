@@ -4,6 +4,8 @@ import './styles/index.less';
 import { Link } from 'react-router-dom';
 import * as checks from '../../utils';
 
+import { SignUpData } from '../../models/interfaces';
+
 export interface IState {
   confirmPass: string;
   channelName: string;
@@ -11,24 +13,14 @@ export interface IState {
   email: string;
   password: string;
   userName: string;
-  // channelNameOnChangeHandler: () => void;
-  // userNameOnChangeHandler: () => void;
-  // emailChangeHandler: () => void;
-  // passwordChangeHandler: () => void;
-  // confirmPassHandler: () => void;
 }
 
 export interface IProps {
-  step: number;
-  channelName: string;
-  email: string;
-  userName: string;
-  password: string;
-  submitForm: () => void;
+  signUp: (payload: SignUpData) => void;
 }
 
-export default class SignUpForm extends React.Component<IProps, IState> {
-  constructor(props: any) {
+class SignUpForm extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       channelName: '',
@@ -78,6 +70,7 @@ export default class SignUpForm extends React.Component<IProps, IState> {
     if (event.currentTarget.value === this.state.password) {
       this.setState({
         ...this.state,
+        confirmPass: event.currentTarget.value,
         page: 6
       });
     } else {
@@ -122,13 +115,22 @@ export default class SignUpForm extends React.Component<IProps, IState> {
     }
   };
 
+  public submit = () => {
+    const payload: SignUpData = {
+      channelName: this.state.channelName,
+      email: this.state.email,
+      name: this.state.userName,
+      password: this.state.password
+    };
+    this.props.signUp(payload);
+  };
+
   public render() {
-    const { page } = this.state;
-    const { channelName, email, userName, password, submitForm } = this.props;
+    const { page, channelName, userName, password, confirmPass, email } = this.state;
     const submit = (values: any) => window.console.log(values);
     return (
       <div className="form_wrapper">
-        <form onSubmit={e => window.console.log(e)} className="sign_up_form">
+        <div className="sign_up_form">
           {page >= 1 && (
             <div>
               <label className="label">Channel Name:</label>
@@ -209,7 +211,7 @@ export default class SignUpForm extends React.Component<IProps, IState> {
                   name="confirm_password"
                   className="input"
                   type="text"
-                  value={password}
+                  value={confirmPass}
                   onChange={this.confirmPassHandler.bind(event)}
                 />
                 <span className="icon is-small is-left">
@@ -221,7 +223,7 @@ export default class SignUpForm extends React.Component<IProps, IState> {
 
           {page >= 6 && (
             <div className="submit_bar">
-              <button className="button is-primary" type="submit" onClick={submitForm}>
+              <button className="button is-primary" type="submit" onClick={this.submit}>
                 SignUp
               </button>
             </div>
@@ -231,8 +233,10 @@ export default class SignUpForm extends React.Component<IProps, IState> {
               already heve an account?
             </Link>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
 }
+
+export default SignUpForm;

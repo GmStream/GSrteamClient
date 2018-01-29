@@ -1,12 +1,12 @@
 import { SIGN_IN_ERROR, SIGN_UP_ERROR } from '../actions/actionTypes';
-import { SignUpActions } from '../actions/formActions';
+import { FromActions } from '../actions/formActions';
 import { formStateInitial } from '../models';
 
 const initialState: formStateInitial = {};
 
 export const formStateReducer = (
   state: formStateInitial = initialState,
-  action: SignUpActions
+  action: FromActions
 ): formStateInitial => {
   switch (action.type) {
     case SIGN_IN_ERROR:

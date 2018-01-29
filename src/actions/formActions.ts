@@ -22,4 +22,9 @@ export interface ISignIn {
   payload: SignInData;
 }
 
-export type SignUpActions = ISignUp | ISignUpErr | ISignInErr;
+export type FromActions = ISignUp | ISignUpErr | ISignInErr;
+
+export const signUp = (payload: SignUpData): ISignUp => ({
+  payload,
+  type: actionTypes.USER_SIGN_UP
+});

@@ -1,10 +1,8 @@
+import { fork } from 'redux-saga/effects';
+import * as watchers from './watchers';
+
 function* rootSaga() {
-  yield [];
+  yield [fork(watchers.signUpWatcher)];
 }
 
 export default rootSaga;
-
-export interface IAction {
-  type: string;
-  payload?: any;
-}

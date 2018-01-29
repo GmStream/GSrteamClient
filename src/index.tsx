@@ -12,13 +12,11 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-import SignUp from './containers/SignUp';
-
 import Navbar from './components/Navbar';
 
 import Footer from './components/Footer';
 
-import SignUpForm from './components/SignUpForm/';
+import SignUp from './containers/SignUp/';
 
 declare var process: any;
 
@@ -27,7 +25,7 @@ const App = () => (
     <Navbar />
     <div className="page-content">
       <Switch>
-        <Route exact path="/sign_up" component={SignUpForm} />
+        <Route exact path="/sign_up" component={SignUp} />
       </Switch>
     </div>
     <Footer />
