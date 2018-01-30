@@ -127,7 +127,6 @@ class SignUpForm extends React.Component<IProps, IState> {
 
   public render() {
     const { page, channelName, userName, password, confirmPass, email } = this.state;
-    const submit = (values: any) => window.console.log(values);
     return (
       <div className="form_wrapper">
         <div className="sign_up_form">
