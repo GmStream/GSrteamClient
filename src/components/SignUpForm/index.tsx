@@ -228,7 +228,7 @@ class SignUpForm extends React.Component<IProps, IState> {
             </div>
           )}
           <div className="link_bar">
-            <Link to="/signin" className="form_link">
+            <Link to="/" className="form_link">
               already heve an account?
             </Link>
           </div>

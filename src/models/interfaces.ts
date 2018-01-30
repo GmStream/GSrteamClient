@@ -10,5 +10,10 @@ export interface ISignInData {
   password: string;
 }
 
+export interface IConfirmationData {
+  token: string;
+}
+
 export type SignUpData = ISignUpData;
 export type SignInData = ISignInData;
+export type ConfPayload = IConfirmationData;

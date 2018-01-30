@@ -1,10 +1,11 @@
+import queryString from 'query-string';
 import * as React from 'react';
 import './styles/index.less';
 
 import { Link } from 'react-router-dom';
 import * as checks from '../../utils';
 
-import { SignInData } from '../../models/interfaces';
+import { ConfPayload, SignInData } from '../../models/interfaces';
 
 export interface IState {
   page: number;
@@ -14,6 +15,10 @@ export interface IState {
 
 export interface IProps {
   signIn: (payload: SignInData) => void;
+  location: {
+    search: any;
+  };
+  handleEmailConfirmation: (token: ConfPayload) => void;
 }
 
 class SignUpForm extends React.Component<IProps, IState> {
@@ -24,6 +29,16 @@ class SignUpForm extends React.Component<IProps, IState> {
       page: 1,
       password: ''
     };
+  }
+
+  public componentDidMount() {
+    if (queryString.parse(this.props.location.search).token) {
+      const token: string = queryString.parse(this.props.location.search).token;
+      const payload: ConfPayload = {
+        token
+      };
+      this.props.handleEmailConfirmation(payload);
+    }
   }
 
   public emailChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
@@ -98,7 +113,7 @@ class SignUpForm extends React.Component<IProps, IState> {
                 <input
                   name="password"
                   className="input"
-                  type="text"
+                  type="password"
                   value={password}
                   onChange={this.passwordChangeHandler.bind(event)}
                 />
@@ -112,7 +127,7 @@ class SignUpForm extends React.Component<IProps, IState> {
           {page >= 3 && (
             <div className="submit_bar">
               <button className="button is-primary" type="submit" onClick={this.submit}>
-                SignUp
+                SignIn
               </button>
             </div>
           )}
