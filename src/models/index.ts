@@ -3,4 +3,10 @@ export interface IForm {
   message?: string;
 }
 
+export interface IAppError {
+  errorCode?: number;
+  message?: string;
+}
+
+export type appErrorInitial = IAppError;
 export type formStateInitial = IForm;
