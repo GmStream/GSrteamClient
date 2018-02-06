@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import SignIn from './containers/SignIn/';
 import SignUp from './containers/SignUp/';
+import Stream from './containers/Stream';
 
 declare var process: any;
 
@@ -26,6 +27,7 @@ const App = () => (
       <Switch>
         <Route exact path="/sign_up" component={SignUp} />
         <Route exact path="/" component={SignIn} />
+        <Route path="/stream" component={Stream} />
       </Switch>
     </div>
     <Footer />
