@@ -20,19 +20,27 @@ import Stream from './containers/Stream';
 
 declare var process: any;
 
-const App = () => (
-  <div className="wrapper">
-    <Navbar />
-    <div className="page-content">
-      <Switch>
-        <Route exact path="/sign_up" component={SignUp} />
-        <Route exact path="/" component={SignIn} />
-        <Route path="/stream" component={Stream} />
-      </Switch>
-    </div>
-    <Footer />
-  </div>
-);
+class App extends React.PureComponent {
+  constructor(props: any) {
+    super(props);
+  }
+
+  public render() {
+    return (
+      <div className="wrapper">
+        <Navbar />
+        <div className="page-content">
+          <Switch>
+            <Route exact path="/sign_up" component={SignUp} />
+            <Route exact path="/" component={SignIn} />
+            <Route path="/stream" component={Stream} />
+          </Switch>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+}
 
 const sagaMiddleware = createSagaMiddleware();
 const initialState = {};
