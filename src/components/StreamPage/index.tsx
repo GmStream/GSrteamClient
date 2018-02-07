@@ -28,7 +28,7 @@ class StreamPage extends React.PureComponent<IProps, IState> {
     const evalString = `
     hdwplayer({ 
       id       : 'player',
-      swf      : 'player/player.swf',
+      swf      : 'hdwPlayer/player/player.swf',
       width    : '630',
       height   : '360',
       type     : 'rtmp',
