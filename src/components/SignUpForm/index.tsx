@@ -125,114 +125,142 @@ class SignUpForm extends React.Component<IProps, IState> {
     this.props.signUp(payload);
   };
 
+  public cancel = () => {
+    this.setState({
+      ...this.state,
+      page: 6
+    });
+  };
+
+  public showModal = () => {
+    this.setState({
+      ...this.state,
+      page: 7
+    });
+  };
+
   public render() {
     const { page, channelName, userName, password, confirmPass, email } = this.state;
     return (
       <div className="form_wrapper">
-        <div className="sign_up_form">
-          {page >= 1 && (
-            <div>
-              <label className="label">Channel Name:</label>
-              <p className="control has-icons-left">
-                <input
-                  name="channelname"
-                  className="input"
-                  type="text"
-                  value={channelName}
-                  onChange={this.channelNameOnChangeHandler.bind(event)}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fa fa-address-card-o" />
-                </span>
-              </p>
-            </div>
-          )}
+        {page < 7 && (
+          <div className="sign_up_form">
+            {page >= 1 && (
+              <div>
+                <label className="label">Channel Name:</label>
+                <p className="control has-icons-left">
+                  <input
+                    name="channelname"
+                    className="input"
+                    type="text"
+                    value={channelName}
+                    onChange={this.channelNameOnChangeHandler.bind(event)}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-address-card-o" />
+                  </span>
+                </p>
+              </div>
+            )}
 
-          {page >= 2 && (
-            <div>
-              <label className="label">Full Name:</label>
-              <p className="control has-icons-left">
-                <input
-                  name="username"
-                  className="input"
-                  type="text"
-                  value={userName}
-                  onChange={this.userNameOnChangeHandler.bind(event)}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fa fa-user" />
-                </span>
-              </p>
-            </div>
-          )}
+            {page >= 2 && (
+              <div>
+                <label className="label">Full Name:</label>
+                <p className="control has-icons-left">
+                  <input
+                    name="username"
+                    className="input"
+                    type="text"
+                    value={userName}
+                    onChange={this.userNameOnChangeHandler.bind(event)}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-user" />
+                  </span>
+                </p>
+              </div>
+            )}
 
-          {page >= 3 && (
-            <div>
-              <label className="label">Email:</label>
-              <p className="control has-icons-left">
-                <input
-                  name="email"
-                  className="input"
-                  type="email"
-                  value={email}
-                  onChange={this.emailChangeHandler.bind(event)}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fa fa-envelope-o" />
-                </span>
-              </p>
-            </div>
-          )}
+            {page >= 3 && (
+              <div>
+                <label className="label">Email:</label>
+                <p className="control has-icons-left">
+                  <input
+                    name="email"
+                    className="input"
+                    type="email"
+                    value={email}
+                    onChange={this.emailChangeHandler.bind(event)}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-envelope-o" />
+                  </span>
+                </p>
+              </div>
+            )}
 
-          {page >= 4 && (
-            <div>
-              <label className="label">Password:</label>
-              <p className="control has-icons-left">
-                <input
-                  name="password"
-                  className="input"
-                  type="text"
-                  value={password}
-                  onChange={this.passwordChangeHandler.bind(event)}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fa fa-key" />
-                </span>
-              </p>
-            </div>
-          )}
+            {page >= 4 && (
+              <div>
+                <label className="label">Password:</label>
+                <p className="control has-icons-left">
+                  <input
+                    name="password"
+                    className="input"
+                    type="text"
+                    value={password}
+                    onChange={this.passwordChangeHandler.bind(event)}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-key" />
+                  </span>
+                </p>
+              </div>
+            )}
 
-          {page >= 5 && (
-            <div>
-              <label className="label">Confirm Password:</label>
-              <p className="control has-icons-left">
-                <input
-                  name="confirm_password"
-                  className="input"
-                  type="text"
-                  value={confirmPass}
-                  onChange={this.confirmPassHandler.bind(event)}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fa fa-key" />
-                </span>
-              </p>
-            </div>
-          )}
+            {page >= 5 && (
+              <div>
+                <label className="label">Confirm Password:</label>
+                <p className="control has-icons-left">
+                  <input
+                    name="confirm_password"
+                    className="input"
+                    type="text"
+                    value={confirmPass}
+                    onChange={this.confirmPassHandler.bind(event)}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fa fa-key" />
+                  </span>
+                </p>
+              </div>
+            )}
 
-          {page >= 6 && (
-            <div className="submit_bar">
-              <button className="button is-primary" type="submit" onClick={this.submit}>
-                SignUp
-              </button>
+            {page >= 6 && (
+              <div className="submit_bar">
+                <button className="button is-primary" type="submit" onClick={this.showModal}>
+                  SignUp
+                </button>
+              </div>
+            )}
+            <div className="link_bar">
+              <Link to="/" className="form_link">
+                already heve an account?
+              </Link>
             </div>
-          )}
-          <div className="link_bar">
-            <Link to="/" className="form_link">
-              already heve an account?
-            </Link>
           </div>
-        </div>
+        )}
+
+        {page >= 7 && (
+          <div className="modal_submit">
+            // here will be policy of service
+            <button className="button is-danger" type="submit" onClick={this.cancel}>
+              Cancel
+            </button>
+            <button className="button is-success" type="submit" onClick={this.submit}>
+              Confirm
+            </button>
+          </div>
+        )}
       </div>
     );
   }

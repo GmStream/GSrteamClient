@@ -87,6 +87,10 @@ class SignUpForm extends React.Component<IProps, IState> {
     const { page, password, email } = this.state;
     return (
       <div className="form_wrapper">
+        <div className="greetings-container matrix">
+          <p className="greetings">welcome</p>
+          <p> to best streaming service</p>
+        </div>
         <div className="sign_in_form">
           {page >= 1 && (
             <div>

@@ -23,12 +23,12 @@ class StreamPage extends React.PureComponent<IProps, IState> {
     div.setAttribute('id', 'player');
     document.body.appendChild(div);
     // streamer is constant but video will be geted from url path
-    const streamer = `rtmp://IP:PORT/live`;
+    const streamer = `rtmp://192.168.14.132:1935/live`;
     const video = `114`;
     const evalString = `
     hdwplayer({ 
       id       : 'player',
-      swf      : 'player/player.swf',
+      swf      : 'hdwPlayer/player/player.swf',
       width    : '630',
       height   : '360',
       type     : 'rtmp',
