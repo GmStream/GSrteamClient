@@ -26,74 +26,106 @@ class App extends React.PureComponent {
   }
 
   public componentDidMount() {
+    // create and configure canvas
+
     const canvas = document.createElement('canvas');
     const c: any = canvas.getContext('2d');
-    const particles: any = {};
-    let particleIndex = 0;
-    const particleNum = 0.1;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     canvas.id = 'motion';
     document.body.appendChild(canvas);
-    // Finished Creating Canvas
-    // Setting color which is just one big square
-    const myGradient: any = c.createLinearGradient(0, 0, 0, 170);
-    myGradient.addColorStop(0, 'DarkTurquoise');
+    const numStars = 2000;
+    const FPS = 40;
+    const stars: any = [];
+
+    // backgroung gradient
+
+    const myGradient: any = c.createLinearGradient(0, 70, 40, 170);
+    myGradient.addColorStop(0, 'black');
     myGradient.addColorStop(1, 'DodgerBlue');
     c.fillStyle = myGradient;
     c.fillRect(0, 0, canvas.width, canvas.height);
-    // Finished Color
-    // tslint:disable-next-line:variable-name
-    const y_fourth = Math.floor(canvas.height / 4);
-    // tslint:disable-next-line:variable-name
-    const y_second_fourth = Math.floor(y_fourth * 2);
 
-    const Particle: any = function() {
-      // tslint:disable-next-line:variable-name
-      const random_x = Math.floor(Math.random() * 0) + 1;
-      // tslint:disable-next-line:variable-name
-      const random_y = Math.floor(Math.random() * y_second_fourth + y_fourth) + 1;
-      this.x = random_x;
-      this.y = random_y;
+    const Star: any = function(x: any, y: any, length: any, opacity: any) {
+      this.x = parseInt(x, 0);
+      this.y = parseInt(y, 0);
+      this.length = parseInt(length, 0);
+      this.opacity = opacity;
+      this.factor = 1;
+      this.increment = Math.random() * 0.03;
       this.vx = Math.random() * 5 - 2;
       this.vy = Math.random() * 2 - 1;
-      this.gravity = 0;
-      particleIndex++;
-      particles[particleIndex] = this;
-      this.id = particleIndex;
-      this.size = Math.random() * 6 - 2;
-      this.color = 'hsla(0,0%,' + parseInt((Math.random() * 100) as any, 0) + '%,1)';
-      this.color2 = 'hsla(360,100%,' + parseInt((Math.random() * 100) as any, 0) + '%,1)';
-      this.color3 = 'hsla(210,100%,' + parseInt((Math.random() * 100) as any, 0) + '%,1)';
-      this.color_selector = Math.random() * 150 - 1;
     };
-    Particle.prototype.draw = function() {
+
+    // draw a star
+
+    Star.prototype.draw = function() {
+      c.rotate(Math.PI * 1 / 10);
+
+      // move star
       this.x += this.vx;
       this.y += this.vy;
-      this.vy += this.gravity;
-      if (this.x > canvas.width || this.y > canvas.height) {
-        delete particles[this.id];
+
+      // dave the context
+      c.save();
+
+      // move into the middle of the canvas, just to make room
+      c.translate(this.x, this.y);
+
+      // change the opacity
+      if (this.opacity > 1) {
+        this.factor = -1;
+      } else if (this.opacity <= 0) {
+        this.factor = 1;
+
+        this.x = Math.round(Math.random() * canvas.width);
+        this.y = Math.round(Math.random() * canvas.height);
       }
-      if (this.color_selector < 30 && this.color_selector > 10) {
-        c.fillStyle = this.color2;
-      } else if (this.color_selector < 10) {
-        c.fillStyle = this.color3;
-      } else {
-        c.fillStyle = this.color;
+
+      this.opacity += this.increment * this.factor;
+
+      c.beginPath();
+      for (let i = 5; i--; ) {
+        c.lineTo(0, this.length);
+        c.translate(0, this.length);
+        c.rotate(Math.PI * 2 / 10);
+        c.lineTo(0, -this.length);
+        c.translate(0, -this.length);
+        c.rotate(-(Math.PI * 6 / 10));
       }
-      c.fillRect(this.x, this.y, this.size, this.size);
+      c.lineTo(0, this.length);
+      c.closePath();
+      c.fillStyle = 'rgba(255, 255, 255, ' + this.opacity + ')';
+      c.shadowBlur = 5;
+      c.shadowColor = 'white';
+      c.fill();
+
+      c.restore();
     };
-    setInterval(() => {
+
+    for (let i = 0; i < numStars; i++) {
+      const x = Math.round(Math.random() * canvas.width);
+      const y = Math.round(Math.random() * canvas.height);
+      const length = 1 + Math.random() * 2;
+      const opacity = Math.random();
+
+      // create a new star and draw
+      const star = new Star(x, y, length, opacity);
+
+      // add the the stars array
+      stars.push(star);
+    }
+
+    function animate() {
+      c.clearRect(0, 0, canvas.width, canvas.height);
       c.fillStyle = myGradient;
       c.fillRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particleNum; i++) {
-        const buffer: any = new Particle();
-      }
-      // tslint:disable-next-line:forin
-      for (const i in particles) {
-        particles[i].draw();
-      }
-    }, 30);
+      stars.forEach((star: any) => {
+        star.draw(c);
+      });
+    }
+
+    setInterval(animate, 1000 / FPS);
   }
 
   public render() {
