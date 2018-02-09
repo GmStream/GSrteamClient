@@ -38,12 +38,6 @@ class App extends React.PureComponent {
     const FPS = 40;
     const stars: any = [];
 
-    // backgroung gradient
-
-    const myGradient: any = c.createLinearGradient(0, 70, 40, 170);
-    myGradient.addColorStop(0, 'black');
-    myGradient.addColorStop(1, 'DodgerBlue');
-    c.fillStyle = myGradient;
     c.fillRect(0, 0, canvas.width, canvas.height);
 
     const Star: any = function(x: any, y: any, length: any, opacity: any) {
@@ -118,8 +112,6 @@ class App extends React.PureComponent {
 
     function animate() {
       c.clearRect(0, 0, canvas.width, canvas.height);
-      c.fillStyle = myGradient;
-      c.fillRect(0, 0, canvas.width, canvas.height);
       stars.forEach((star: any) => {
         star.draw(c);
       });

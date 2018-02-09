@@ -62,6 +62,14 @@ module.exports = () => {
               loader: 'url-loader'
             }
           ]
+        },
+        {
+          test: /.(jpg|jpeg|png(2)?)(\?[a-z0-9]+)?$/,
+          use: [
+            {
+              loader: 'url-loader'
+            }
+          ]
         }
       ]
     },

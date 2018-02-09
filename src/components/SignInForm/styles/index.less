@@ -1,12 +1,23 @@
 .sign_in_form {
   max-width: 50%;
 
-  margin: 5%;
-  padding: 30px;
-  border-radius: 10px;
-  border: 1px solid silver;
+  background-color: transparent;
 
-  background-color: white;
+  a {
+    color: #0a2359;
+    -webkit-transition: color, 0.2s;
+    transition: color 0.2s;
+
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: rgb(76, 77, 79);
+  }
+}
+
+.form_wrapper {
+  flex-direction: column;
 }
 
 .matrix {
@@ -20,7 +31,7 @@
 .greetings-container {
   position: absolute;
 
-  top: 80px;
+  top: 40px;
   left: 20px;
 
   text-align: center;
@@ -45,4 +56,46 @@
 .greetings {
   font-family: 'Gravitas One', cursive;
   color: aliceblue;
+}
+
+.logo {
+  height: 100px;
+  width: 50%;
+  background-image: url('../../../images/logo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.link_bar {
+  border-top: 1.5px solid rgba(48, 46, 46, 0.45);
+  margin-top: 10%;
+}
+
+@media (max-width: 480px) {
+  .sign_in_form {
+    max-width: 90%;
+
+    background-color: transparent;
+
+    a {
+      color: #0a2359;
+      -webkit-transition: color, 0.2s;
+      transition: color 0.2s;
+
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: rgb(76, 77, 79);
+    }
+  }
+
+  .greetings-container {
+    position: absolute;
+
+    top: 20px;
+    left: 10px;
+
+    text-align: center;
+  }
 }

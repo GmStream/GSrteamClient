@@ -39,6 +39,21 @@ class SignUpForm extends React.Component<IProps, IState> {
       };
       this.props.handleEmailConfirmation(payload);
     }
+    // hide navbar
+    let result = document.getElementsByClassName('navbar');
+    const navbar: any = result[0];
+    navbar.style.display = 'none';
+
+    result = document.getElementsByClassName('footer');
+    const footer: any = result[0];
+    footer.style['background-color'] = 'transparent';
+  }
+
+  public componentWillUnmount() {
+    // return navbar
+    const result = document.getElementsByClassName('navbar');
+    const navbar: any = result[0];
+    navbar.style.display = 'flex';
   }
 
   public emailChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
@@ -91,17 +106,18 @@ class SignUpForm extends React.Component<IProps, IState> {
           <p className="greetings">#welcome</p>
           <p className="greetings_message"> to best streaming service</p>
         </div>
+        <div className="logo" />
         <div className="sign_in_form">
           {page >= 1 && (
             <div>
-              <label className="label">Email:</label>
               <p className="control has-icons-left">
                 <input
                   name="email"
-                  className="input"
+                  className="input blue_input"
                   type="email"
                   value={email}
                   onChange={this.emailChangeHandler.bind(event)}
+                  placeholder="Email"
                 />
                 <span className="icon is-small is-left">
                   <i className="fa fa-envelope-o" />
@@ -112,14 +128,14 @@ class SignUpForm extends React.Component<IProps, IState> {
 
           {page >= 2 && (
             <div>
-              <label className="label">Password:</label>
               <p className="control has-icons-left">
                 <input
                   name="password"
-                  className="input"
+                  className="input blue_input"
                   type="password"
                   value={password}
                   onChange={this.passwordChangeHandler.bind(event)}
+                  placeholder="Password"
                 />
                 <span className="icon is-small is-left">
                   <i className="fa fa-key" />
@@ -130,14 +146,14 @@ class SignUpForm extends React.Component<IProps, IState> {
 
           {page >= 3 && (
             <div className="submit_bar">
-              <button className="button is-primary" type="submit" onClick={this.submit}>
-                SignIn
+              <button className="button submit_blue_button" type="submit" onClick={this.submit}>
+                Sign In
               </button>
             </div>
           )}
           <div className="link_bar">
             <Link to="/signup" className="form_link">
-              register
+              create Gstream account
             </Link>
           </div>
         </div>

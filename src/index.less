@@ -45,4 +45,45 @@ body {
   width: 100%;
 
   z-index: -2;
+
+  background-image: url('./images/background.jpg');
+  background-size: cover;
+}
+
+.blue_input {
+  margin-bottom: 5%;
+
+  border-radius: 0px;
+
+  background-color: rgba(3, 5, 7, 0.679);
+  border-color: rgba(139, 150, 165, 0.815);
+  color: white;
+}
+
+.blue_input::placeholder {
+  color: rgba(139, 150, 165, 0.815);
+}
+
+.submit_blue_button {
+  width: 100%;
+
+  border-radius: 0px;
+
+  background-color: #035e92;
+  color: #fff;
+  border: 1px solid #035e85;
+  box-shadow: 0 0 rgba(0, 0, 0, 0);
+  border-radius: 0;
+  -webkit-transition: background-color 0.2s, box-shadow 0.2s, background-color 0.2s,
+    border-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, box-shadow 0.2s, background-color 0.2s, border-color 0.2s,
+    color 0.2s;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+.submit_blue_button:hover {
+  background-color: #199ad5;
+  color: #fff;
+  border-color: #167eae;
+  box-shadow: 0 0 rgba(0, 0, 0, 0);
 }
