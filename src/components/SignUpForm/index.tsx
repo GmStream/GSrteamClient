@@ -32,6 +32,24 @@ class SignUpForm extends React.Component<IProps, IState> {
     };
   }
 
+  public componentDidMount() {
+    // hide navbar
+    let result = document.getElementsByClassName('navbar');
+    const navbar: any = result[0];
+    navbar.style.display = 'none';
+
+    result = document.getElementsByClassName('footer');
+    const footer: any = result[0];
+    footer.style['background-color'] = 'transparent';
+  }
+
+  public componentWillUnmount() {
+    // return navbar
+    const result = document.getElementsByClassName('navbar');
+    const navbar: any = result[0];
+    navbar.style.display = 'flex';
+  }
+
   public emailChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
     const isTrueFormat = checks.checkEmail(event.currentTarget.value);
 
@@ -143,15 +161,22 @@ class SignUpForm extends React.Component<IProps, IState> {
     const { page, channelName, userName, password, confirmPass, email } = this.state;
     return (
       <div className="form_wrapper">
+        {page < 7 && <div className="logo" />}
+        {page < 7 && (
+          <div className="join_container">
+            Fill all fields to create an account.
+            <p className="join">#Join us!</p>
+          </div>
+        )}
         {page < 7 && (
           <div className="sign_up_form">
             {page >= 1 && (
               <div>
-                <label className="label">Channel Name:</label>
                 <p className="control has-icons-left">
                   <input
+                    placeholder="Channel name"
                     name="channelname"
-                    className="input"
+                    className="input blue_input"
                     type="text"
                     value={channelName}
                     onChange={this.channelNameOnChangeHandler.bind(event)}
@@ -165,11 +190,11 @@ class SignUpForm extends React.Component<IProps, IState> {
 
             {page >= 2 && (
               <div>
-                <label className="label">Full Name:</label>
                 <p className="control has-icons-left">
                   <input
+                    placeholder="Full name"
                     name="username"
-                    className="input"
+                    className="input blue_input"
                     type="text"
                     value={userName}
                     onChange={this.userNameOnChangeHandler.bind(event)}
@@ -183,11 +208,11 @@ class SignUpForm extends React.Component<IProps, IState> {
 
             {page >= 3 && (
               <div>
-                <label className="label">Email:</label>
                 <p className="control has-icons-left">
                   <input
+                    placeholder="Email"
                     name="email"
-                    className="input"
+                    className="input blue_input"
                     type="email"
                     value={email}
                     onChange={this.emailChangeHandler.bind(event)}
@@ -201,11 +226,11 @@ class SignUpForm extends React.Component<IProps, IState> {
 
             {page >= 4 && (
               <div>
-                <label className="label">Password:</label>
                 <p className="control has-icons-left">
                   <input
+                    placeholder="Password"
                     name="password"
-                    className="input"
+                    className="input blue_input"
                     type="text"
                     value={password}
                     onChange={this.passwordChangeHandler.bind(event)}
@@ -219,11 +244,11 @@ class SignUpForm extends React.Component<IProps, IState> {
 
             {page >= 5 && (
               <div>
-                <label className="label">Confirm Password:</label>
                 <p className="control has-icons-left">
                   <input
+                    placeholder="Confirm password"
                     name="confirm_password"
-                    className="input"
+                    className="input blue_input"
                     type="text"
                     value={confirmPass}
                     onChange={this.confirmPassHandler.bind(event)}
@@ -237,7 +262,11 @@ class SignUpForm extends React.Component<IProps, IState> {
 
             {page >= 6 && (
               <div className="submit_bar">
-                <button className="button is-primary" type="submit" onClick={this.showModal}>
+                <button
+                  className="button submit_blue_button"
+                  type="submit"
+                  onClick={this.showModal}
+                >
                   SignUp
                 </button>
               </div>
