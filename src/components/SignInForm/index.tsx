@@ -19,6 +19,9 @@ export interface IProps {
     search: any;
   };
   handleEmailConfirmation: (token: ConfPayload) => void;
+  history: {
+    push: (url: string) => void;
+  };
 }
 
 class SignUpForm extends React.Component<IProps, IState> {
@@ -29,6 +32,10 @@ class SignUpForm extends React.Component<IProps, IState> {
       page: 1,
       password: ''
     };
+  }
+
+  public componentWillReciveNewProps(nextProps: IProps) {
+    this.props.history.push('/streams');
   }
 
   public componentDidMount() {
@@ -116,7 +123,7 @@ class SignUpForm extends React.Component<IProps, IState> {
                   className="input blue_input"
                   type="email"
                   value={email}
-                  onChange={this.emailChangeHandler.bind(event)}
+                  onChange={this.emailChangeHandler.bind(this)}
                   placeholder="Email"
                 />
                 <span className="icon is-small is-left">
@@ -134,7 +141,7 @@ class SignUpForm extends React.Component<IProps, IState> {
                   className="input blue_input"
                   type="password"
                   value={password}
-                  onChange={this.passwordChangeHandler.bind(event)}
+                  onChange={this.passwordChangeHandler.bind(this)}
                   placeholder="Password"
                 />
                 <span className="icon is-small is-left">

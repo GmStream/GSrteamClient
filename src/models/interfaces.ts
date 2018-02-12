@@ -14,6 +14,12 @@ export interface IConfirmationData {
   token: string;
 }
 
+export interface IUserData {
+  email: string;
+  name: string;
+}
+
 export type SignUpData = ISignUpData;
 export type SignInData = ISignInData;
 export type ConfPayload = IConfirmationData;
+export type UserData = IUserData;

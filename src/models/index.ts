@@ -8,5 +8,11 @@ export interface IAppError {
   message?: string;
 }
 
+export interface IUserData {
+  email?: string;
+  name?: string;
+}
+
 export type appErrorInitial = IAppError;
 export type formStateInitial = IForm;
+export type userState = IUserData;

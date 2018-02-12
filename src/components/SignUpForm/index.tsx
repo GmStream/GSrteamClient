@@ -179,7 +179,7 @@ class SignUpForm extends React.Component<IProps, IState> {
                     className="input blue_input"
                     type="text"
                     value={channelName}
-                    onChange={this.channelNameOnChangeHandler.bind(event)}
+                    onChange={this.channelNameOnChangeHandler.bind(this)}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa fa-address-card-o" />
@@ -197,7 +197,7 @@ class SignUpForm extends React.Component<IProps, IState> {
                     className="input blue_input"
                     type="text"
                     value={userName}
-                    onChange={this.userNameOnChangeHandler.bind(event)}
+                    onChange={this.userNameOnChangeHandler.bind(this)}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa fa-user" />
@@ -215,7 +215,7 @@ class SignUpForm extends React.Component<IProps, IState> {
                     className="input blue_input"
                     type="email"
                     value={email}
-                    onChange={this.emailChangeHandler.bind(event)}
+                    onChange={this.emailChangeHandler.bind(this)}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa fa-envelope-o" />
@@ -233,7 +233,7 @@ class SignUpForm extends React.Component<IProps, IState> {
                     className="input blue_input"
                     type="text"
                     value={password}
-                    onChange={this.passwordChangeHandler.bind(event)}
+                    onChange={this.passwordChangeHandler.bind(this)}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa fa-key" />
@@ -251,7 +251,7 @@ class SignUpForm extends React.Component<IProps, IState> {
                     className="input blue_input"
                     type="text"
                     value={confirmPass}
-                    onChange={this.confirmPassHandler.bind(event)}
+                    onChange={this.confirmPassHandler.bind(this)}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa fa-key" />
