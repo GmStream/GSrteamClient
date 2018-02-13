@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch: Dispatch<FromActions>) => ({
 });
 
 const mapStateToProps = (state: any) => ({
-  formState: state.formState
+  formState: state.formState,
+  userData: state.userData
 });
 
 export default connect<IStateToProps, IDispatchFromProps>(mapStateToProps, mapDispatchToProps)(

@@ -18,6 +18,11 @@ export interface IProps {
   location: {
     search: any;
   };
+  userData: {
+    loggedIn: boolean;
+    name: string;
+    email: string;
+  };
   handleEmailConfirmation: (token: ConfPayload) => void;
   history: {
     push: (url: string) => void;
@@ -34,8 +39,10 @@ class SignUpForm extends React.Component<IProps, IState> {
     };
   }
 
-  public componentWillReciveNewProps(nextProps: IProps) {
-    this.props.history.push('/streams');
+  public componentWillReceiveProps(nextProps: IProps) {
+    if (nextProps.userData.loggedIn) {
+      this.props.history.push('/streams');
+    }
   }
 
   public componentDidMount() {
@@ -159,7 +166,7 @@ class SignUpForm extends React.Component<IProps, IState> {
             </div>
           )}
           <div className="link_bar">
-            <Link to="/signup" className="form_link">
+            <Link to="/sign_up" className="form_link">
               create Gstream account
             </Link>
           </div>

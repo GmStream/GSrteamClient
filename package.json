@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "test": "jest --no-cache",
+    "watch": "webpack -w",
+    "build": "webpack -p",
     "test:coverage": "jest -coverage"
   },
   "jest": {

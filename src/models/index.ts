@@ -11,6 +11,7 @@ export interface IAppError {
 export interface IUserData {
   email?: string;
   name?: string;
+  loggedIn: boolean;
 }
 
 export type appErrorInitial = IAppError;
