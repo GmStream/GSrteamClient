@@ -14,6 +14,7 @@ import rootSaga from './sagas';
 
 import Footer from './components/common/Footer';
 import Navbar from './components/common/Navbar';
+import Main from './containers/MainPage';
 import SignIn from './containers/SignIn/';
 import SignUp from './containers/SignUp/';
 import Stream from './containers/Stream';
@@ -128,7 +129,8 @@ class App extends React.PureComponent {
           <Switch>
             <Route exact path="/sign_up" component={SignUp} />
             <Route exact path="/" component={SignIn} />
-            <Route path="/stream" component={Stream} />
+            <Route path="/channel" component={Stream} />
+            <Route path="/main" component={Main} />
           </Switch>
         </div>
         <Footer />

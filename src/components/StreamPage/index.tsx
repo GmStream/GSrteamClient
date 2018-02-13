@@ -19,6 +19,7 @@ class StreamPage extends React.PureComponent<IProps, IState> {
   }
 
   public componentDidMount() {
+    window.console.log('one');
     const div = document.createElement(`div`);
     div.setAttribute('id', 'player');
     document.body.appendChild(div);
@@ -26,9 +27,9 @@ class StreamPage extends React.PureComponent<IProps, IState> {
     const streamer = `rtmp://192.168.14.132:1935/live`;
     const video = `114`;
     const evalString = `
-    hdwplayer({ 
+    hdwplayer({
       id       : 'player',
-      swf      : 'hdwPlayer/player/player.swf',
+      swf      : '../hdwPlayer/player/player.swf',
       width    : '630',
       height   : '360',
       type     : 'rtmp',

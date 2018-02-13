@@ -41,7 +41,7 @@ class SignUpForm extends React.Component<IProps, IState> {
 
   public componentWillReceiveProps(nextProps: IProps) {
     if (nextProps.userData.loggedIn) {
-      this.props.history.push('/streams');
+      this.props.history.push('/main');
     }
   }
 
