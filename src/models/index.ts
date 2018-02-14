@@ -3,9 +3,12 @@ export interface IForm {
   message?: string;
 }
 
-export interface IAppError {
-  errorCode?: number;
-  message?: string;
+export interface IAppData {
+  error?: {
+    errorCode?: number;
+    message?: string;
+  };
+  selectedstreamId?: string;
 }
 
 export interface IUserData {
@@ -14,6 +17,6 @@ export interface IUserData {
   loggedIn: boolean;
 }
 
-export type appErrorInitial = IAppError;
+export type appDataInitial = IAppData;
 export type formStateInitial = IForm;
 export type userState = IUserData;

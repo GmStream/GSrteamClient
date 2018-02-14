@@ -1,9 +1,11 @@
 import * as React from 'react';
 
+import * as config from '../../config/';
 import './styles/index.less';
 
 export interface IProps {
   joinStreamHandler: (userId: string) => void;
+  appData: any;
 }
 
 export interface IState {
@@ -19,13 +21,10 @@ class StreamPage extends React.PureComponent<IProps, IState> {
   }
 
   public componentDidMount() {
-    window.console.log('one');
     const div = document.createElement(`div`);
     div.setAttribute('id', 'player');
     document.body.appendChild(div);
     // streamer is constant but video will be geted from url path
-    const streamer = `rtmp://192.168.14.132:1935/live`;
-    const video = `114`;
     const evalString = `
     hdwplayer({
       id       : 'player',
@@ -33,14 +32,20 @@ class StreamPage extends React.PureComponent<IProps, IState> {
       width    : '630',
       height   : '360',
       type     : 'rtmp',
-      streamer : '${streamer}',
-      video    : '${video}',
+      streamer : '${config.STREAM_SERVER}',
+      video    : '${this.props.appData.channelId}',
       autoStart: 'true'
     });
  `;
     // eval used for config hdwplayer
     // tslint:disable-next-line:no-eval
     eval(evalString);
+  }
+
+  public componentWillUnmount() {
+    // remove HDW player when
+    const player: any = document.getElementById('player');
+    player.remove();
   }
 
   public render() {

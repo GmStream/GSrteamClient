@@ -118,7 +118,7 @@ class SignUpForm extends React.Component<IProps, IState> {
       <div className="form_wrapper">
         <div className="greetings-container matrix">
           <p className="greetings">#welcome</p>
-          <p className="greetings_message"> to best streaming service</p>
+          <p className="greetings_message"> to the best streaming service</p>
         </div>
         <div className="logo" />
         <div className="sign_in_form">

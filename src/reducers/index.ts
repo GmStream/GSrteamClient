@@ -1,12 +1,12 @@
 import { Action, combineReducers, Reducer } from 'redux';
 
-import { appErrorReducer } from './appError';
+import { appDataReducer } from './appData';
 import { formStateReducer } from './formState';
 import { userDataReducer } from './userData';
 
 // as any `cause redux have some troubles with typescript
 export default combineReducers({
-  appErrors: appErrorReducer,
+  appData: appDataReducer,
   formState: formStateReducer,
   userData: userDataReducer
 } as any);
