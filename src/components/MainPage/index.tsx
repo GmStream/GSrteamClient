@@ -4,6 +4,8 @@ import { UserData } from '../../models/interfaces';
 import Layout from './layout';
 import StreamTile from './streamTile';
 
+import './styles/index.less';
+
 export interface IProps {
   history: {
     push: (url: string) => void;
@@ -59,7 +61,9 @@ class MainPage extends React.Component<IProps> {
 
     return (
       <div>
-        <Layout tiles={mockedData} handler={this.tileHandler} />
+        <div className="tiles_container">
+          <Layout tiles={mockedData} handler={this.tileHandler} />
+        </div>
       </div>
     );
   }
