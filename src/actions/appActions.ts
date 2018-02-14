@@ -1,4 +1,4 @@
-import { UserData } from '../models/interfaces';
+import { SessionData, UserData } from '../models/interfaces';
 import * as actionTypes from './actionTypes';
 
 export interface IUserSignInSuccess {
@@ -42,5 +42,7 @@ export const leaveStream = () => ({
   type: actionTypes.LEAVING_STREAM
 });
 
-// TODO:
-// add actions to select channel and configure (params ID)
+export const continueSession = (payload: UserData) => ({
+  payload,
+  type: actionTypes.SIGN_IN_SUCCES
+});

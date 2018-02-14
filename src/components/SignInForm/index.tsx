@@ -3,9 +3,9 @@ import * as React from 'react';
 import './styles/index.less';
 
 import { Link } from 'react-router-dom';
-import * as checks from '../../utils';
+import { checks, decodeToken, getSesionTokenFromLS } from '../../utils';
 
-import { ConfPayload, SignInData } from '../../models/interfaces';
+import { ConfPayload, SignInData, UserData } from '../../models/interfaces';
 
 export interface IState {
   page: number;
@@ -23,6 +23,7 @@ export interface IProps {
     name: string;
     email: string;
   };
+  continueSession: (payload: UserData) => void;
   handleEmailConfirmation: (token: ConfPayload) => void;
   history: {
     push: (url: string) => void;
@@ -52,6 +53,12 @@ class SignUpForm extends React.Component<IProps, IState> {
         token
       };
       this.props.handleEmailConfirmation(payload);
+    }
+    const sessionToken: string | null = getSesionTokenFromLS();
+    if (sessionToken) {
+      const userData: UserData = decodeToken(sessionToken);
+      this.props.continueSession(userData);
+      this.props.history.push('/main');
     }
     // hide navbar
     let result = document.getElementsByClassName('navbar');

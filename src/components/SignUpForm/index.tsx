@@ -2,7 +2,7 @@ import * as React from 'react';
 import './styles/index.less';
 
 import { Link } from 'react-router-dom';
-import * as checks from '../../utils';
+import { checks } from '../../utils';
 
 import { SignUpData } from '../../models/interfaces';
 

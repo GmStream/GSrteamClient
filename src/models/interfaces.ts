@@ -19,7 +19,12 @@ export interface IUserData {
   name: string;
 }
 
+export interface ISessionData {
+  token: string;
+}
+
 export type SignUpData = ISignUpData;
 export type SignInData = ISignInData;
 export type ConfPayload = IConfirmationData;
 export type UserData = IUserData;
+export type SessionData = ISessionData;
