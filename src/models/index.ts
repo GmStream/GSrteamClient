@@ -8,7 +8,7 @@ export interface IAppData {
     errorCode?: number;
     message?: string;
   };
-  selectedstreamId?: string;
+  selectedStreamId?: string;
 }
 
 export interface IUserData {

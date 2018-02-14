@@ -1,23 +1,22 @@
 import { connect, Dispatch } from 'react-redux';
+import * as appActions from '../../actions/appActions';
 import MainPage from '../../components/MainPage';
 
 export interface IStateToProps {
-  formState: any;
+  appData: any;
 }
 
 export interface IDispatchFromProps {
-  joinStreamHandler: (userId: string) => void;
+  joinStream: (channelId: string) => void;
 }
 
 // replace any with actions type
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  joinStreamHandler: (userId: string) => {
-    window.console.log(userId + 'joined to stream');
-  }
+  joinStream: (channelId: string) => dispatch(appActions.selectChannel(channelId))
 });
 
 const mapStateToProps = (state: any) => ({
-  formState: state.formState
+  appData: state.appData
 });
 
 export default connect<IStateToProps, IDispatchFromProps>(mapStateToProps, mapDispatchToProps)(

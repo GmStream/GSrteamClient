@@ -8,6 +8,7 @@ export interface IProps {
   history: {
     push: (url: string) => void;
   };
+  joinStream: (channelId: string) => void;
 }
 
 class MainPage extends React.Component<IProps> {
@@ -15,8 +16,9 @@ class MainPage extends React.Component<IProps> {
     super(props);
   }
 
-  public tileHandler = (id: string) => {
+  public tileHandler = (channelId: string) => {
     this.props.history.push(`/channel`);
+    this.props.joinStream(channelId);
   };
 
   public render() {

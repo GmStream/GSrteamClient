@@ -1,23 +1,23 @@
 import { connect, Dispatch } from 'react-redux';
 import StreamPage from '../../components/StreamPage';
 
+import * as appActions from '../../actions/appActions';
+
 export interface IStateToProps {
-  formState: any;
+  appData: any;
 }
 
 export interface IDispatchFromProps {
-  joinStreamHandler: (userId: string) => void;
+  leaveStream: () => void;
 }
 
 // replace any with actions type
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  joinStreamHandler: (userId: string) => {
-    window.console.log(userId + 'joined to stream');
-  }
+  leaveStream: () => dispatch(appActions.leaveStream())
 });
 
 const mapStateToProps = (state: any) => ({
-  formState: state.formState
+  appData: state.appData
 });
 
 export default connect<IStateToProps, IDispatchFromProps>(mapStateToProps, mapDispatchToProps)(

@@ -1,4 +1,5 @@
-import { APP_CONNECTION_ERROR, STREAM_CONN_ERROR } from '../actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes';
+import { appActions } from '../actions/appActions';
 import { appDataInitial } from '../models';
 
 const initialState: appDataInitial = {};
@@ -8,10 +9,20 @@ const initialState: appDataInitial = {};
 // TODO:
 // fix types for actions
 
-export const appDataReducer = (state = initialState, action: any) => {
+export const appDataReducer = (state = initialState, action: appActions) => {
   switch (action.type) {
-    case APP_CONNECTION_ERROR:
+    case actionTypes.APP_CONNECTION_ERROR:
       return state;
+    case actionTypes.CONNECTION_TO_STREAM:
+      return {
+        ...state,
+        selectedStreamId: action.payload
+      };
+    case actionTypes.LEAVING_STREAM:
+      return {
+        ...state,
+        selectedStreamId: ''
+      };
     default:
       return state;
   }
