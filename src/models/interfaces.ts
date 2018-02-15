@@ -17,6 +17,7 @@ export interface IConfirmationData {
 export interface IUserData {
   email: string;
   name: string;
+  profileImageLink?: string;
 }
 
 export interface ISessionData {

@@ -15,6 +15,7 @@ export interface IUserData {
   email?: string;
   name?: string;
   loggedIn: boolean;
+  profileImageLink?: string;
 }
 
 export type appDataInitial = IAppData;
