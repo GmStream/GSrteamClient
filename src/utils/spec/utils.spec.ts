@@ -1,6 +1,6 @@
-import * as utils from '../';
+import { checks } from '../';
 
-describe('Utils test', () => {
+describe('checks test', () => {
   const correctMockData = {
     channelName: 'bu',
     email: 'gstream.thj.bublic@gmail.com',
@@ -16,34 +16,34 @@ describe('Utils test', () => {
   };
 
   it('should return true if email is valid', () => {
-    expect(utils.checkEmail(correctMockData.email)).toEqual(true);
+    expect(checks.checkEmail(correctMockData.email)).toEqual(true);
   });
 
   it('should return false if email is not valid', () => {
-    expect(utils.checkEmail(wrongMockData.email)).toEqual(false);
+    expect(checks.checkEmail(wrongMockData.email)).toEqual(false);
   });
 
   it('should return true if name is valid', () => {
-    expect(utils.checkUserName(correctMockData.name)).toEqual(true);
+    expect(checks.checkUserName(correctMockData.name)).toEqual(true);
   });
 
   it('should return false if name is not valid', () => {
-    expect(utils.checkUserName(wrongMockData.name)).toEqual(false);
+    expect(checks.checkUserName(wrongMockData.name)).toEqual(false);
   });
 
   it('should return true if channel name is valid', () => {
-    expect(utils.checkChannelName(correctMockData.channelName)).toEqual(true);
+    expect(checks.checkChannelName(correctMockData.channelName)).toEqual(true);
   });
 
   it('should return false if channel name is not valid', () => {
-    expect(utils.checkChannelName(wrongMockData.channelName)).toEqual(false);
+    expect(checks.checkChannelName(wrongMockData.channelName)).toEqual(false);
   });
 
   it('should return true if password is valid', () => {
-    expect(utils.checkPassword(correctMockData.password)).toEqual(true);
+    expect(checks.checkPassword(correctMockData.password)).toEqual(true);
   });
 
   it('should return false if password is not valid', () => {
-    expect(utils.checkPassword(wrongMockData.password)).toEqual(false);
+    expect(checks.checkPassword(wrongMockData.password)).toEqual(false);
   });
 });

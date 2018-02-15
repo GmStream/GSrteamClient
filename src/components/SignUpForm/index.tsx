@@ -6,6 +6,8 @@ import { checks } from '../../utils';
 
 import { SignUpData } from '../../models/interfaces';
 
+import { createCanvas, removeCanvas } from '../../utils/animation';
+
 export interface IState {
   confirmPass: string;
   channelName: string;
@@ -41,6 +43,7 @@ class SignUpForm extends React.Component<IProps, IState> {
     result = document.getElementsByClassName('footer');
     const footer: any = result[0];
     footer.style['background-color'] = 'transparent';
+    createCanvas();
   }
 
   public componentWillUnmount() {
@@ -48,6 +51,7 @@ class SignUpForm extends React.Component<IProps, IState> {
     const result = document.getElementsByClassName('navbar');
     const navbar: any = result[0];
     navbar.style.display = 'flex';
+    removeCanvas();
   }
 
   public emailChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
