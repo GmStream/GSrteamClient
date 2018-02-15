@@ -38,5 +38,5 @@ export const createCanvas = () => {
 
 export const removeCanvas = () => {
   const canvas: any = document.getElementById('motion');
-  document.removeChild(canvas);
+  canvas.remove();
 };
