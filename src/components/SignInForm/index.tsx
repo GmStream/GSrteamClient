@@ -171,7 +171,7 @@ class SignUpForm extends React.Component<IProps, IState> {
 
           {page >= 3 && (
             <div className="submit_bar">
-              <button className="button submit_blue_button" type="submit" onClick={this.submit}>
+              <button className="button submit_button" type="submit" onClick={this.submit}>
                 Sign In
               </button>
             </div>

@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Gravitas+One');
 @import url('https://fonts.googleapis.com/css?family=Jura');
 @import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
 
 .wrapper {
   display: flex;
@@ -64,26 +65,14 @@ body {
   color: rgba(139, 150, 165, 0.815);
 }
 
-.submit_blue_button {
-  width: 100%;
-
-  border-radius: 0px;
-
-  background-color: #035e92;
-  color: #fff;
-  border: 1px solid #035e85;
-  box-shadow: 0 0 rgba(0, 0, 0, 0);
-  border-radius: 0;
-  -webkit-transition: background-color 0.2s, box-shadow 0.2s, background-color 0.2s,
-    border-color 0.2s, color 0.2s;
-  transition: background-color 0.2s, box-shadow 0.2s, background-color 0.2s, border-color 0.2s,
-    color 0.2s;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+.submit_button {
+  margin-top: -15px;
+  width: 166px;
+  height: 86px;
+  border: none;
+  background: url('./images/button_sprite.png') no-repeat 0px top;
 }
 
-.submit_blue_button:hover {
-  background-color: #199ad5;
-  color: #fff;
-  border-color: #167eae;
-  box-shadow: 0 0 rgba(0, 0, 0, 0);
+.submit_button:hover {
+  background-position: -166px;
 }

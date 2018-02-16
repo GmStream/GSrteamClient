@@ -59,7 +59,7 @@ export default class Snowflake {
     }
     this.context.lineTo(0, this.length);
     this.context.closePath();
-    this.context.fillStyle = 'rgba(255, 255, 255, ' + this.opacity + ')';
+    this.context.fillStyle = 'rgba(219, 163, 255, ' + this.opacity + ')';
     this.context.shadowBlur = 5;
     this.context.shadowColor = 'white';
     this.context.fill();

@@ -60,9 +60,17 @@ class MainPage extends React.Component<IProps> {
     ];
 
     return (
-      <div>
-        <div className="tiles_container">
-          <Layout tiles={mockedData} handler={this.tileHandler} />
+      <div className="Mp_wrapper">
+        <div className="Mp_header">
+          <div className="decoration" />
+          here something will be
+        </div>
+        <div className="Mp_tiles">
+          <div className="Mp_tiles_header" />
+          <div className="tiles_container">
+            <Layout tiles={mockedData} handler={this.tileHandler} />
+          </div>
+          <div className="Mp_tiles_footer" />
         </div>
       </div>
     );
