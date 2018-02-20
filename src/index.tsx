@@ -18,6 +18,7 @@ import Main from './containers/MainPage';
 import SignIn from './containers/SignIn/';
 import SignUp from './containers/SignUp/';
 import Stream from './containers/Stream';
+import StreamConfigurePage from './containers/StreamConfigurePage';
 
 declare var process: any;
 
@@ -40,6 +41,7 @@ class App extends React.PureComponent {
             <Route exact path="/" component={SignIn} />
             <Route path="/channel" component={Stream} />
             <Route path="/main" component={Main} />
+            <Route path="/stream_configure" component={StreamConfigurePage} />
           </Switch>
         </div>
         <Footer />
