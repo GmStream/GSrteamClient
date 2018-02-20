@@ -3,14 +3,23 @@ import * as React from 'react';
 import * as config from '../../config/';
 import './styles/index.less';
 
+import { socket } from '../../api/api';
+
 export interface IProps {
   leaveStream: () => void;
+  emitMessage: (payload: any) => void;
   appData: any;
 }
 
 class StreamPage extends React.PureComponent<IProps> {
   constructor(props: IProps) {
     super(props);
+  }
+
+  public componentWillMount() {
+    socket.on('message', (payload: any) => {
+      this.props.emitMessage(payload);
+    });
   }
 
   public componentDidMount() {

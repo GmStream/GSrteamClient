@@ -3,8 +3,11 @@ import * as React from 'react';
 import * as config from '../../config/';
 import './styles/index.less';
 
+import { socket } from '../../api/api';
+
 export interface IProps {
   leaveStream: () => void;
+  emitMessage: (payload: any) => void;
   appData: any;
 }
 
@@ -13,16 +16,33 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     super(props);
   }
 
+  public componentWillMount() {
+    socket.on('message', (payload: any) => {
+      this.props.emitMessage(payload);
+    });
+  }
+
   public componentDidMount() {
     const div = document.createElement(`div`);
     div.setAttribute('id', 'player');
-    document.body.appendChild(div);
+
+    const container: any = document.getElementById('Pcontainer');
+    container.appendChild(div);
+
+    let screenWidth = window.screen.width;
+    let height = screenWidth / 1.5;
+
+    if (screenWidth > 630) {
+      screenWidth = 630;
+      height = 360;
+    }
+
     const evalString = `
     hdwplayer({
       id       : 'player',
       swf      : '../hdwPlayer/player/player.swf',
-      width    : '630',
-      height   : '360',
+      width    : ${screenWidth},
+      height   : ${height},
       type     : 'rtmp',
       streamer : '${config.STREAM_SERVER}',
       video    : '${this.props.appData.selectedStreamId}',
@@ -43,7 +63,11 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
   }
 
   public render() {
-    return <div className="stream_page" />;
+    return (
+      <div className="stream_page">
+        <div id="Pcontainer" className="player_container" />
+      </div>
+    );
   }
 }
 
