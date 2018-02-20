@@ -5,7 +5,7 @@ const API = 'localhost:2999';
 
 import * as io from 'socket.io-client';
 
-export const socket = io.connect(`http://localhost:2999/`);
+export const socket = io.connect(`http://${API}`);
 
 export const signUp = (payload: any) => axios.post(`http://${API}/api/user/signup`, payload);
 
@@ -14,9 +14,9 @@ export const signIn = (payload: any) => axios.post(`http://${API}/api/user/signi
 export const confirm = (payload: any) => axios.post(`http://${API}/api/user/confirm`, payload);
 
 export const connectToChatRoom = (payload: any) => {
-  socket.emit('connect to room', payload);
+  socket.emit('join_room', payload);
 };
 
 export const sendMessage = (payload: any) => {
-  socket.emit('message', payload);
+  socket.emit('room_message', payload);
 };
