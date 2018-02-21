@@ -1,11 +1,13 @@
 import { connect, Dispatch } from 'react-redux';
 import StreamPage from '../../components/StreamPage';
 
+import { UserData } from 'models/interfaces';
 import * as appActions from '../../actions/appActions';
 import * as chatActions from '../../actions/chatActions';
 
 export interface IStateToProps {
   appData: any;
+  userData: UserData;
 }
 
 export interface IDispatchFromProps {
@@ -20,7 +22,8 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
 });
 
 const mapStateToProps = (state: any) => ({
-  appData: state.appData
+  appData: state.appData,
+  userData: state.userData
 });
 
 export default connect<IStateToProps, IDispatchFromProps>(mapStateToProps, mapDispatchToProps)(

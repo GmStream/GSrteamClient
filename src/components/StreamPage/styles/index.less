@@ -1,16 +1,48 @@
-.stream_page {
-  display: flex;
-  background-color: white;
-  flex: auto;
-}
-
 #player {
   display: flex;
   margin: auto;
 }
 
-.stream_page {
-  display: flex;
-  justify-content: center;
-  padding-top: 50px;
+// .stream_page {
+//   display: flex;
+//   flex: auto;
+//   justify-content: flex-end;
+
+//   padding-top: 50px;
+
+//   background-color: white;
+
+//   .player_container {
+//     flex: 2;
+//   }
+// }
+
+@media screen and (max-width: 768px) {
+  .stream_page {
+    display: flex;
+    flex: auto;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-height: 100vh;
+
+    padding-top: 50px;
+
+    background-color: white;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .stream_page {
+    display: flex;
+    flex: auto;
+    justify-content: flex-end;
+
+    padding-top: 50px;
+
+    background-color: white;
+
+    .player_container {
+      flex: 2;
+    }
+  }
 }

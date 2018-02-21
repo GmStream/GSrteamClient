@@ -1,14 +1,17 @@
 import * as React from 'react';
-
 import * as config from '../../config/';
+import { UserData } from '../../models/interfaces';
 import './styles/index.less';
 
 import { socket } from '../../api/api';
+
+import Chat from '../Chat';
 
 export interface IProps {
   leaveStream: () => void;
   emitMessage: (payload: any) => void;
   appData: any;
+  userData: UserData;
 }
 
 class StreamPage extends React.PureComponent<IProps> {
@@ -32,7 +35,7 @@ class StreamPage extends React.PureComponent<IProps> {
     let screenWidth = window.screen.width;
     let height = screenWidth / 1.5;
 
-    if (screenWidth > 630) {
+    if (screenWidth > 768) {
       screenWidth = 630;
       height = 360;
     }
@@ -66,6 +69,11 @@ class StreamPage extends React.PureComponent<IProps> {
     return (
       <div className="stream_page">
         <div id="Pcontainer" className="player_container" />
+        <Chat
+          emmitMessage={this.props.emitMessage}
+          userName={this.props.userData.name}
+          messages={this.props.appData.messages}
+        />
       </div>
     );
   }
