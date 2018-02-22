@@ -41,3 +41,9 @@ export type LEAVING_STREAM = typeof LEAVING_STREAM;
 
 export const CHAT_MESSAGE_EMMITION = 'CHAT_MESSAGE_EMMITION';
 export type CHAT_MESSAGE_EMMITION = typeof CHAT_MESSAGE_EMMITION;
+
+export const START_STREAM = 'START_STREAM';
+export type START_STREAM = typeof START_STREAM;
+
+export const STOP_STREAM = 'STOP_STREAM';
+export type STOP_STREAM = typeof STOP_STREAM;

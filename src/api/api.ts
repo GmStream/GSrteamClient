@@ -13,6 +13,12 @@ export const signIn = (payload: any) => axios.post(`http://${API}/api/user/signi
 
 export const confirm = (payload: any) => axios.post(`http://${API}/api/user/confirm`, payload);
 
+export const startStream = (payload: any) =>
+  axios.post(`http://${API}/api/stream/start_stream`, payload);
+
+export const sstopStream = (payload: any) =>
+  axios.post(`http://${API}/api/stream/stop_stream`, payload);
+
 export const connectToChatRoom = (payload: any) => {
   socket.emit('join_room', payload);
 };
