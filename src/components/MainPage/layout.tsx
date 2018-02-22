@@ -17,7 +17,7 @@ class Layout extends React.PureComponent<IProps> {
       return (
         <StreamTile
           channelName={channel.channelName}
-          channelId={channel.channelId}
+          channelId={channel._id}
           profileImageLink={channel.profileImageLink}
           tileHandler={this.props.handler}
           key={'tile' + channel.channelId}

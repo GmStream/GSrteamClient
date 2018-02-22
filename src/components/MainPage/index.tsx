@@ -7,10 +7,13 @@ import StreamTile from './streamTile';
 import './styles/index.less';
 
 export interface IProps {
+  appData: any;
   history: {
     push: (url: string) => void;
   };
   joinStream: (channelId: string) => void;
+  loadChannelsHandler: (payload: any) => void;
+  loadMoreChannelsHandler: (payload: any) => void;
 }
 
 class MainPage extends React.Component<IProps> {
@@ -23,73 +26,11 @@ class MainPage extends React.Component<IProps> {
     this.props.joinStream(channelId);
   };
 
-  public render() {
-    const mockedData = [
-      {
-        channelDescription:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32 "de Finibus Bonorum et Malorum"',
-        channelId: '5',
-        channelName: 'bugagagaTV',
-        profileImageLink:
-          'https://vignette.wikia.nocookie.net/hellokitty/images/b/bb/Sanrio_Characters_Charmmy_Kitty_Image008.png/revision/latest?cb=20170402172228'
-      },
-      {
-        channelDescription:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32 "de Finibus Bonorum et Malorum"',
-        channelId: '4',
-        channelName: 'bugagagaTV',
-        profileImageLink:
-          'https://vignette.wikia.nocookie.net/hellokitty/images/b/bb/Sanrio_Characters_Charmmy_Kitty_Image008.png/revision/latest?cb=20170402172228'
-      },
-      {
-        channelDescription:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular durin the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32 "de Finibus Bonorum et Malorum"',
-        channelId: '3',
-        channelName: 'bugagagaTV',
-        profileImageLink:
-          'https://vignette.wikia.nocookie.net/hellokitty/images/b/bb/Sanrio_Characters_Charmmy_Kitty_Image008.png/revision/latest?cb=20170402172228'
-      },
-      {
-        channelDescription:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32 "de Finibus Bonorum et Malorum"',
-        channelId: '2',
-        channelName: 'bugagagaTV',
-        profileImageLink:
-          'https://vignette.wikia.nocookie.net/hellokitty/images/b/bb/Sanrio_Characters_Charmmy_Kitty_Image008.png/revision/latest?cb=20170402172228'
-      },
-      {
-        channelDescription:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32 "de Finibus Bonorum et Malorum"',
-        channelId: '1',
-        channelName: 'bugagagaTV',
-        profileImageLink:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Domrachev_Vasily_Valerianovich.jpg/267px-Domrachev_Vasily_Valerianovich.jpg'
-      },
-      {
-        channelDescription:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32 "de Finibus Bonorum et Malorum"',
-        channelId: '6',
-        channelName: 'bugagagaTV',
-        profileImageLink:
-          'https://vignette.wikia.nocookie.net/hellokitty/images/b/bb/Sanrio_Characters_Charmmy_Kitty_Image008.png/revision/latest?cb=20170402172228'
-      },
-      {
-        channelDescription:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular durin the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32 "de Finibus Bonorum et Malorum"',
-        channelId: '7',
-        channelName: 'bugagagaTV',
-        profileImageLink: 'http://s.newslab.ru/Content/dosie/slonov-vasilij-petrovich.jpg'
-      },
-      {
-        channelDescription:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32 "de Finibus Bonorum et Malorum"',
-        channelId: '8',
-        channelName: 'bugagagaTV',
-        profileImageLink:
-          'https://vignette.wikia.nocookie.net/hellokitty/images/b/bb/Sanrio_Characters_Charmmy_Kitty_Image008.png/revision/latest?cb=20170402172228'
-      }
-    ];
+  public componentDidMount() {
+    this.props.loadChannelsHandler({ limit: 10 });
+  }
 
+  public render() {
     return (
       <div className="Mp_wrapper">
         <div className="Mp_header">
@@ -99,7 +40,7 @@ class MainPage extends React.Component<IProps> {
         <div className="Mp_tiles">
           <div className="Mp_tiles_header" />
           <div className="tiles_container">
-            <Layout tiles={mockedData} handler={this.tileHandler} />
+            <Layout tiles={this.props.appData.channels} handler={this.tileHandler} />
           </div>
           <div className="Mp_tiles_footer" />
         </div>

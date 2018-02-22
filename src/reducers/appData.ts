@@ -1,19 +1,26 @@
+import { startStream } from 'api/api';
 import * as actionTypes from '../actions/actionTypes';
-import { appActions } from '../actions/appActions';
+import { appActions, appActionsWithoutPayload } from '../actions/appActions';
 import { appDataInitial } from '../models';
 
-const initialState: appDataInitial = {};
+const initialState: appDataInitial = {
+  channels: []
+};
 
 // fro every error with satus 404 redirect on err page
 
 // TODO:
 // fix types for actions
 
-export const appDataReducer = (state = initialState, action: appActions) => {
+export const appDataReducer = (
+  state = initialState,
+  action: appActions | appActionsWithoutPayload
+) => {
   switch (action.type) {
     case actionTypes.APP_CONNECTION_ERROR:
       return state;
     case actionTypes.CONNECTION_TO_STREAM:
+      window.console.log(action);
       return {
         ...state,
         selectedStreamId: action.payload
@@ -22,6 +29,11 @@ export const appDataReducer = (state = initialState, action: appActions) => {
       return {
         ...state,
         selectedStreamId: ''
+      };
+    case actionTypes.APP_REFRESH_CHANNELS_LIST:
+      return {
+        ...state,
+        channels: [].concat(state.channels as any, action.payload)
       };
     default:
       return state;

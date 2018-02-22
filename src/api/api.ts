@@ -13,6 +13,8 @@ export const signIn = (payload: any) => axios.post(`http://${API}/api/user/signi
 
 export const confirm = (payload: any) => axios.post(`http://${API}/api/user/confirm`, payload);
 
+export const loadChannels = (payload: any) => axios.post(`http://${API}/api/channel/load`, payload);
+
 export const startStream = (payload: any) =>
   axios.post(`http://${API}/api/stream/start_stream`, payload);
 

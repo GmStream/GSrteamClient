@@ -9,6 +9,7 @@ export interface IAppData {
     message?: string;
   };
   selectedStreamId?: string;
+  channels: any[];
 }
 
 export interface IUserData {

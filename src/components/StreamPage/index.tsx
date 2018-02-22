@@ -40,6 +40,8 @@ class StreamPage extends React.PureComponent<IProps> {
       height = 360;
     }
 
+    window.console.log(this.props.appData);
+
     const evalString = `
     hdwplayer({
       id       : 'player',

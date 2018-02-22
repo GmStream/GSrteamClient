@@ -22,10 +22,42 @@ export interface IChannelChose {
   payload: string;
 }
 
+// create data type for payload
+export interface ILoadChannels {
+  type: actionTypes.APP_LOAD_CHANNELS;
+  payload: {
+    limit: number;
+  };
+}
+
+export interface ILeaveStream {
+  type: actionTypes.LEAVING_STREAM;
+}
+
+export interface ILoadMoreChannels {
+  type: actionTypes.APP_LOAD_MORE_CHANNELS;
+  payload: {
+    searchString?: string;
+    skip?: number;
+    limit: number;
+  };
+}
+
+export interface IRefreshChannelsList {
+  type: actionTypes.APP_REFRESH_CHANNELS_LIST;
+  payload: any;
+}
+
 export type appActions =
   | IUserSignInSuccess
-  | IUserLogOut
   | IChannelChose
+  | ILoadChannels
+  | ILoadMoreChannels
+  | IRefreshChannelsList;
+
+export type appActionsWithoutPayload =
+  | IUserLogOut
+  | ILeaveStream
   | IAppConnectionError
   | IUselectChannel;
 
@@ -45,4 +77,14 @@ export const leaveStream = () => ({
 export const continueSession = (payload: UserData) => ({
   payload,
   type: actionTypes.SIGN_IN_SUCCES
+});
+
+export const loadChannels = (payload: any) => ({
+  payload,
+  type: actionTypes.APP_LOAD_CHANNELS
+});
+
+export const loadMoreChannels = (payload: any) => ({
+  payload,
+  type: actionTypes.APP_LOAD_MORE_CHANNELS
 });
