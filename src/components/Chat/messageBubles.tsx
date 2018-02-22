@@ -17,12 +17,12 @@ export default class MessageBubles extends React.PureComponent<IProps> {
     super(props);
   }
   public render() {
-    return this.props.messages.map((item: any, index) => (
+    return this.props.messages.reverse().map((item: any, index) => (
       <div
         className={item.user === this.props.userName ? 'user_message' : 'chat_message'}
         key={'message' + index}
       >
-        {item.message}
+        <p>{item.message}</p>
       </div>
     ));
   }

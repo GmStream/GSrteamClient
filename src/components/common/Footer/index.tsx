@@ -3,7 +3,7 @@ import * as React from 'react';
 import './styles/index.less';
 
 const Footer = ({}) => (
-  <footer className="footer" role="navigation" aria-label="main navigation">
+  <footer className="footer footer_channel" role="navigation" aria-label="main navigation">
     <p>Gstream Inc. all rghts reserved,2018</p>
   </footer>
 );
