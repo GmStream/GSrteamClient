@@ -48,6 +48,10 @@ export interface IRefreshChannelsList {
   payload: any;
 }
 
+export interface ICleacrChannelsData {
+  type: actionTypes.APP_CLEAR_CHANNELS_DATA;
+}
+
 export type appActions =
   | IUserSignInSuccess
   | IChannelChose
@@ -59,7 +63,8 @@ export type appActionsWithoutPayload =
   | IUserLogOut
   | ILeaveStream
   | IAppConnectionError
-  | IUselectChannel;
+  | IUselectChannel
+  | ICleacrChannelsData;
 
 export const logOut = () => ({
   type: actionTypes.USER_LOG_OUT
@@ -87,4 +92,8 @@ export const loadChannels = (payload: any) => ({
 export const loadMoreChannels = (payload: any) => ({
   payload,
   type: actionTypes.APP_LOAD_MORE_CHANNELS
+});
+
+export const clearChannelsData = () => ({
+  type: actionTypes.APP_CLEAR_CHANNELS_DATA
 });

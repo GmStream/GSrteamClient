@@ -10,10 +10,12 @@ export interface IDispatchFromProps {
   joinStream: (channelId: string) => void;
   loadChannelsHandler: (payload: any) => void;
   loadMoreChannelsHandler: (payload: any) => void;
+  clearChannelsData: () => void;
 }
 
 // replace any with actions type
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  clearChannelsData: () => dispatch(appActions.clearChannelsData()),
   joinStream: (channelId: string) => dispatch(appActions.selectChannel(channelId)),
   loadChannelsHandler: (payload: any) => dispatch(appActions.loadChannels(payload)),
   loadMoreChannelsHandler: (payload: any) => dispatch(appActions.loadMoreChannels(payload))

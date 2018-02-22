@@ -14,6 +14,7 @@ export interface IProps {
   joinStream: (channelId: string) => void;
   loadChannelsHandler: (payload: any) => void;
   loadMoreChannelsHandler: (payload: any) => void;
+  clearChannelsData: () => void;
 }
 
 class MainPage extends React.Component<IProps> {
@@ -28,6 +29,10 @@ class MainPage extends React.Component<IProps> {
 
   public componentDidMount() {
     this.props.loadChannelsHandler({ limit: 10 });
+  }
+
+  public componentWillUnmount() {
+    this.props.clearChannelsData();
   }
 
   public render() {

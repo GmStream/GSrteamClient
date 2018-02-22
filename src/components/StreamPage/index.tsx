@@ -23,6 +23,7 @@ class StreamPage extends React.PureComponent<IProps> {
     socket.on('message', (payload: any) => {
       this.props.emitMessage(payload);
     });
+    // save to local storage id
   }
 
   public componentDidMount() {
@@ -40,7 +41,7 @@ class StreamPage extends React.PureComponent<IProps> {
       height = 360;
     }
 
-    window.console.log(this.props.appData);
+    // get id from local storage if !this.props.appData.selectedStreamId
 
     const evalString = `
     hdwplayer({

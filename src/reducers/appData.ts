@@ -35,6 +35,12 @@ export const appDataReducer = (
         ...state,
         channels: [].concat(state.channels as any, action.payload)
       };
+
+    case actionTypes.APP_CLEAR_CHANNELS_DATA:
+      return {
+        ...state,
+        channels: []
+      };
     default:
       return state;
   }
