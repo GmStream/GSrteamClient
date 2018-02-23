@@ -28,8 +28,9 @@ class StreamPage extends React.PureComponent<IProps> {
     } else {
       socket.on('message', (payload: any) => {
         const data = [payload];
-        window.console.log(payload);
         this.props.emitMessage(data);
+        const chat: any = document.getElementById('chat');
+        chat.scrollTop = chat.scrollHeight;
       });
       const socketData = {
         roomId: this.props.appData.selectedStreamId,

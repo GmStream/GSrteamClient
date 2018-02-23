@@ -35,14 +35,14 @@ export class Chat extends React.Component<IProps, IState> {
       user: this.props.userName
     };
     this.props.emmitMessage(payload);
+    this.setState({
+      draftMessage: ''
+    });
   }
 
   public render() {
     return (
       <div className="chat_container">
-        <div className="chat">
-          <MessageBubles userName={this.props.userName} messages={this.props.messages} />
-        </div>
         <div className="input_box">
           <input
             type="text"
@@ -58,6 +58,11 @@ export class Chat extends React.Component<IProps, IState> {
           <button className="send_button" onClick={this.sendMessage.bind(this)}>
             send
           </button>
+        </div>
+        <div className="chat" id="chat">
+          <div className="chat_inner">
+            <MessageBubles userName={this.props.userName} messages={this.props.messages} />
+          </div>
         </div>
       </div>
     );

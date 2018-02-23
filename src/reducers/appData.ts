@@ -46,6 +46,7 @@ export const appDataReducer = (
         ...state,
         channels: []
       };
+
     default:
       return state;
   }
