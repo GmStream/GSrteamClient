@@ -1,10 +1,12 @@
 import { startStream } from 'api/api';
 import * as actionTypes from '../actions/actionTypes';
 import { appActions, appActionsWithoutPayload } from '../actions/appActions';
+import { ChatAction } from '../actions/chatActions';
 import { appDataInitial } from '../models';
 
 const initialState: appDataInitial = {
-  channels: []
+  channels: [],
+  chatMessages: []
 };
 
 // fro every error with satus 404 redirect on err page
@@ -14,13 +16,12 @@ const initialState: appDataInitial = {
 
 export const appDataReducer = (
   state = initialState,
-  action: appActions | appActionsWithoutPayload
+  action: appActions | appActionsWithoutPayload | ChatAction
 ) => {
   switch (action.type) {
     case actionTypes.APP_CONNECTION_ERROR:
       return state;
     case actionTypes.CONNECTION_TO_STREAM:
-      window.console.log(action);
       return {
         ...state,
         selectedStreamId: action.payload
@@ -35,7 +36,11 @@ export const appDataReducer = (
         ...state,
         channels: [].concat(state.channels as any, action.payload)
       };
-
+    case actionTypes.CHAT_MESSAGE_EMMITION:
+      return {
+        ...state,
+        chatMessages: [].concat(state.chatMessages as any, action.payload)
+      };
     case actionTypes.APP_CLEAR_CHANNELS_DATA:
       return {
         ...state,

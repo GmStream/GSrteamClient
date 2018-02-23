@@ -30,6 +30,7 @@ export interface IProps {
   history: {
     push: (url: string) => void;
   };
+  setUserData: (payload: any) => void;
 }
 
 class SignUpForm extends React.Component<IProps, IState> {
@@ -59,6 +60,8 @@ class SignUpForm extends React.Component<IProps, IState> {
     const sessionToken: string | null = getSesionTokenFromLS();
     if (sessionToken) {
       const userData: UserData = decodeToken(sessionToken);
+      window.console.log(userData);
+      this.props.setUserData(userData);
       this.props.continueSession(userData);
       this.props.history.push('/main');
     }

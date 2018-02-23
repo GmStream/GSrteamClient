@@ -3,7 +3,7 @@ import * as config from '../../config/';
 import { UserData } from '../../models/interfaces';
 import './styles/index.less';
 
-import { socket } from '../../api/api';
+import { connectToChatRoom, sendRoomMessage, socket } from '../../api/api';
 
 import Chat from '../Chat';
 
@@ -21,8 +21,15 @@ class StreamPage extends React.PureComponent<IProps> {
 
   public componentWillMount() {
     socket.on('message', (payload: any) => {
-      this.props.emitMessage(payload);
+      const data = [payload];
+      window.console.log(payload);
+      this.props.emitMessage(data);
     });
+    const socketData = {
+      roomId: this.props.appData.selectedStreamId,
+      user: this.props.userData.name
+    };
+    connectToChatRoom(socketData);
     // save to local storage id
   }
 
@@ -61,6 +68,11 @@ class StreamPage extends React.PureComponent<IProps> {
     eval(evalString);
   }
 
+  public sendMessage(message: any) {
+    const payload = { ...message, roomId: this.props.appData.selectedStreamId };
+    sendRoomMessage(payload);
+  }
+
   public componentWillUnmount() {
     // remove HDW player during component unmounting
     const player: any = document.getElementById('player');
@@ -73,9 +85,9 @@ class StreamPage extends React.PureComponent<IProps> {
       <div className="stream_page">
         <div id="Pcontainer" className="player_container" />
         <Chat
-          emmitMessage={this.props.emitMessage}
+          emmitMessage={this.sendMessage.bind(this)}
           userName={this.props.userData.name}
-          messages={this.props.appData.messages}
+          messages={this.props.appData.chatMessages}
         />
       </div>
     );

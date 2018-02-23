@@ -10,6 +10,7 @@ export interface IAppData {
   };
   selectedStreamId?: string;
   channels: any[];
+  chatMessages?: any[];
 }
 
 export interface IUserData {

@@ -13,12 +13,14 @@ export interface IDispatchFromProps {
   handleEmailConfirmation: (payload: ConfPayload) => void;
   signIn: (payload: SignInData) => void;
   continueSession: (payload: UserData) => void;
+  setUserData: (payload: any) => void;
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<FromActions>) => ({
   continueSession: (payload: UserData) => dispatch(appActions.continueSession(payload)),
   handleEmailConfirmation: (payload: ConfPayload) =>
     dispatch(formActions.emailConfirmation(payload)),
+  setUserData: (payload: any) => dispatch(appActions.setUserData(payload)),
   signIn: (payload: SignInData) => dispatch(formActions.signIn(payload))
 });
 

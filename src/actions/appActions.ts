@@ -52,12 +52,18 @@ export interface ICleacrChannelsData {
   type: actionTypes.APP_CLEAR_CHANNELS_DATA;
 }
 
+export interface ISetUserData {
+  payload: any;
+  type: actionTypes.APP_SET_USER_DATA;
+}
+
 export type appActions =
   | IUserSignInSuccess
   | IChannelChose
   | ILoadChannels
   | ILoadMoreChannels
-  | IRefreshChannelsList;
+  | IRefreshChannelsList
+  | ISetUserData;
 
 export type appActionsWithoutPayload =
   | IUserLogOut
@@ -96,4 +102,9 @@ export const loadMoreChannels = (payload: any) => ({
 
 export const clearChannelsData = () => ({
   type: actionTypes.APP_CLEAR_CHANNELS_DATA
+});
+
+export const setUserData = (payload: any) => ({
+  payload,
+  type: actionTypes.APP_SET_USER_DATA
 });

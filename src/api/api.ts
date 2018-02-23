@@ -25,6 +25,6 @@ export const connectToChatRoom = (payload: any) => {
   socket.emit('join_room', payload);
 };
 
-export const sendMessage = (payload: any) => {
+export const sendRoomMessage = (payload: any) => {
   socket.emit('room_message', payload);
 };
