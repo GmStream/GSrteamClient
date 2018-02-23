@@ -3,12 +3,15 @@ import * as React from 'react';
 import * as config from '../../config/';
 import './styles/index.less';
 
-import { socket } from '../../api/api';
-
+import { connectToChatRoom, sendRoomMessage, socket } from '../../api/api';
 export interface IProps {
   leaveStream: () => void;
   emitMessage: (payload: any) => void;
   appData: any;
+  history: {
+    push: (url: string) => void;
+  };
+  userData: any;
 }
 
 class StreamConfigurePage extends React.PureComponent<IProps> {
@@ -17,9 +20,21 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
   }
 
   public componentWillMount() {
-    socket.on('message', (payload: any) => {
-      this.props.emitMessage(payload);
-    });
+    if (!this.props.userData.loggedIn) {
+      this.props.history.push('/');
+    } else {
+      socket.on('message', (payload: any) => {
+        const data = [payload];
+        window.console.log(payload);
+        this.props.emitMessage(data);
+      });
+      const socketData = {
+        roomId: this.props.appData.selectedStreamId,
+        user: this.props.userData.name
+      };
+      connectToChatRoom(socketData);
+      // save to local storage id
+    }
   }
 
   public componentDidMount() {

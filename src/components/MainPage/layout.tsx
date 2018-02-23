@@ -20,7 +20,7 @@ class Layout extends React.PureComponent<IProps> {
           channelId={channel._id}
           profileImageLink={channel.profileImageLink}
           tileHandler={this.props.handler}
-          key={'tile' + channel.channelId}
+          key={'tile' + channel._id}
         />
       );
     });

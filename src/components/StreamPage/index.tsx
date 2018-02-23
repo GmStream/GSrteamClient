@@ -11,7 +11,10 @@ export interface IProps {
   leaveStream: () => void;
   emitMessage: (payload: any) => void;
   appData: any;
-  userData: UserData;
+  userData: any;
+  history: {
+    push: (url: string) => void;
+  };
 }
 
 class StreamPage extends React.PureComponent<IProps> {
@@ -20,17 +23,21 @@ class StreamPage extends React.PureComponent<IProps> {
   }
 
   public componentWillMount() {
-    socket.on('message', (payload: any) => {
-      const data = [payload];
-      window.console.log(payload);
-      this.props.emitMessage(data);
-    });
-    const socketData = {
-      roomId: this.props.appData.selectedStreamId,
-      user: this.props.userData.name
-    };
-    connectToChatRoom(socketData);
-    // save to local storage id
+    if (!this.props.userData.loggedIn) {
+      this.props.history.push('/');
+    } else {
+      socket.on('message', (payload: any) => {
+        const data = [payload];
+        window.console.log(payload);
+        this.props.emitMessage(data);
+      });
+      const socketData = {
+        roomId: this.props.appData.selectedStreamId,
+        user: this.props.userData.name
+      };
+      connectToChatRoom(socketData);
+      // save to local storage id
+    }
   }
 
   public componentDidMount() {
