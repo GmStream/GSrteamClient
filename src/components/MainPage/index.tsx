@@ -29,6 +29,12 @@ class MainPage extends React.Component<IProps> {
     this.props.joinStream(channelId);
   };
 
+  public componentWillReceiveProps(newProps: IProps) {
+    if (!newProps.userData.loggedIn) {
+      this.props.history.push('/');
+    }
+  }
+
   public componentWillMount() {
     if (!this.props.userData.loggedIn) {
       this.props.history.push('/');
