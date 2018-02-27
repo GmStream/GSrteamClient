@@ -22,15 +22,19 @@ class Navbar extends React.Component<IProps> {
   }
 
   public render() {
-    return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="user_profile">
-          <div className="image_container">
-            <img src={this.props.userData.profileImageLink} className="profile_image" />
+    if (this.props.userData.loggedIn) {
+      return (
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+          <div className="user_profile">
+            <div className="image_container">
+              <img src={this.props.userData.profileImageLink} className="profile_image" />
+            </div>
           </div>
-        </div>
-      </nav>
-    );
+        </nav>
+      );
+    } else {
+      return null;
+    }
   }
 }
 

@@ -18,6 +18,7 @@ export interface IUserData {
   email: string;
   name: string;
   profileImageLink?: string;
+  loggedIn?: boolean;
 }
 
 export interface ISessionData {

@@ -22,7 +22,8 @@ export const userDataReducer = (
       return {
         ...state,
         email: action.payload.email,
-        name: action.payload.name
+        loggedIn: true,
+        name: action.payload.nameб
       };
     case actionTypes.USER_LOG_OUT: {
       return initialState;

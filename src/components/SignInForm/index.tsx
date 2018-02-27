@@ -65,22 +65,11 @@ class SignUpForm extends React.Component<IProps, IState> {
       this.props.continueSession(userData);
       this.props.history.push('/main');
     }
-    // hide navbar
-    let result = document.getElementsByClassName('navbar');
-    const navbar: any = result[0];
-    navbar.style.display = 'none';
 
-    result = document.getElementsByClassName('footer');
-    const footer: any = result[0];
-    footer.style['background-color'] = 'transparent';
     createCanvas();
   }
 
   public componentWillUnmount() {
-    // return navbar
-    const result = document.getElementsByClassName('navbar');
-    const navbar: any = result[0];
-    navbar.style.display = 'flex';
     removeCanvas();
   }
 
