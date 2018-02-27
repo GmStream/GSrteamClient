@@ -25,10 +25,17 @@ class Navbar extends React.Component<IProps> {
     if (this.props.userData.loggedIn) {
       return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
+          <div className="SB_container">
+            <button className="SStart btn_flag">Stream Now</button>
+          </div>
           <div className="user_profile">
             <div className="image_container">
               <img src={this.props.userData.profileImageLink} className="profile_image" />
             </div>
+            <button className="NAVbutton btn_purple" onClick={() => null}>
+              My Account
+            </button>
+            <button className="NAVbutton btn_blue ">Log Out</button>
           </div>
         </nav>
       );
