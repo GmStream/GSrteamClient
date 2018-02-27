@@ -15,6 +15,7 @@ export interface IProps {
   loadChannelsHandler: (payload: any) => void;
   loadMoreChannelsHandler: (payload: any) => void;
   clearChannelsData: () => void;
+  userData: UserData;
 }
 
 class MainPage extends React.Component<IProps> {
@@ -26,6 +27,12 @@ class MainPage extends React.Component<IProps> {
     this.props.history.push(`/channel`);
     this.props.joinStream(channelId);
   };
+
+  public componentWillMount() {
+    if (!this.props.userData.loggedIn) {
+      this.props.history.push('/');
+    }
+  }
 
   public componentDidMount() {
     this.props.loadChannelsHandler({ limit: 10 });

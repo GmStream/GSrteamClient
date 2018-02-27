@@ -1,9 +1,11 @@
 import { connect, Dispatch } from 'react-redux';
 import * as appActions from '../../actions/appActions';
 import MainPage from '../../components/MainPage';
+import { UserData } from '../../models/interfaces';
 
 export interface IStateToProps {
   appData: any;
+  userData: UserData;
 }
 
 export interface IDispatchFromProps {
@@ -22,7 +24,8 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
 });
 
 const mapStateToProps = (state: any) => ({
-  appData: state.appData
+  appData: state.appData,
+  userData: state.userData
 });
 
 export default connect<IStateToProps, IDispatchFromProps>(mapStateToProps, mapDispatchToProps)(
