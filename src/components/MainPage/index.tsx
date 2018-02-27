@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { LIMIT_OF_CHANNELS } from '../../config';
 import { UserData } from '../../models/interfaces';
 
 import Layout from './layout';
@@ -35,7 +36,7 @@ class MainPage extends React.Component<IProps> {
   }
 
   public componentDidMount() {
-    this.props.loadChannelsHandler({ limit: 10 });
+    this.props.loadChannelsHandler({ limit: LIMIT_OF_CHANNELS });
   }
 
   public componentWillUnmount() {
