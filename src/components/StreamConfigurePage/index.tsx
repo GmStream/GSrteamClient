@@ -25,7 +25,6 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     } else {
       socket.on('message', (payload: any) => {
         const data = [payload];
-        window.console.log(payload);
         this.props.emitMessage(data);
       });
       const socketData = {

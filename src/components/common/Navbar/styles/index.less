@@ -54,6 +54,39 @@
   }
 }
 
+.NAVlink {
+  height: 100%;
+
+  margin-right: 0.2em;
+  padding: 0 1em;
+
+  border: none;
+
+  color: white;
+
+  font-family: 'Jura', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  line-height: 52px;
+
+  user-select: none;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.07);
+    color: white;
+  }
+
+  &:visited {
+    color: white;
+  }
+}
+
 .btn_flag {
   width: 166px;
   height: 86px;
@@ -73,6 +106,9 @@
   letter-spacing: 0.05em;
 
   text-shadow: 5px 3px 2px rgb(55, 55, 55);
+
+  text-align: center;
+  padding-top: 25px;
 }
 
 .btn_flag:hover {
@@ -86,6 +122,26 @@
 
 .SB_container {
   position: fixed;
+  top: 3.5px;
+  left: 50%;
+  margin-left: -83px;
+}
+
+.NAVbrand_container {
+  position: fixed;
   top: 0;
-  left: 1%;
+  left: 0;
+
+  .NAVlogo {
+    height: 52px;
+    width: 169px;
+    background-image: url('../../../../images/logoNAV.png');
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.07);
+      background-image: url('../../../../images/logoNAV--reversed.png');
+    }
+  }
 }

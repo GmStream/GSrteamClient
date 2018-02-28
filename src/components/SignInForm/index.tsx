@@ -60,7 +60,6 @@ class SignUpForm extends React.Component<IProps, IState> {
     const sessionToken: string | null = getSesionTokenFromLS();
     if (sessionToken) {
       const userData: UserData = decodeToken(sessionToken);
-      window.console.log(userData);
       this.props.setUserData(userData);
       this.props.continueSession(userData);
       this.props.history.push('/main');

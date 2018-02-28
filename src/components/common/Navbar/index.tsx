@@ -8,9 +8,7 @@ import './styles/index.less';
 
 export interface IProps {
   userData: UserData;
-  startStream: () => void;
   logOut: () => void;
-  goToProfile: () => void;
 }
 export interface IDispatchToProps {
   logOut: () => void;
@@ -25,30 +23,27 @@ class Navbar extends React.Component<IProps> {
     super(props);
   }
 
-  public statrtStream() {
-    this.props.startStream();
-  }
-
-  public goToProfile() {
-    this.props.goToProfile();
-  }
-
   public render() {
     if (this.props.userData.loggedIn) {
       return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
-          <div className="SB_container">
-            <button className="SStart btn_flag" onClick={this.statrtStream.bind(this)}>
-              Stream Now
-            </button>
+          <div className="NAVbrand_container">
+            <Link to="/main">
+              <div className="NAVlogo" />
+            </Link>
+          </div>
+          <div className="SB_container ">
+            <Link to="/stream_configure">
+              <div className="SStart btn_flag">Stream Now</div>
+            </Link>
           </div>
           <div className="user_profile">
             <div className="image_container">
               <img src={this.props.userData.profileImageLink} className="profile_image" />
             </div>
-            <button className="NAVbutton btn_purple" onClick={this.goToProfile.bind(this)}>
+            <Link to="/account" className="NAVlink btn_purple">
               My Account
-            </button>
+            </Link>
             <button className="NAVbutton btn_blue " onClick={this.props.logOut}>
               Log Out
             </button>
@@ -62,15 +57,9 @@ class Navbar extends React.Component<IProps> {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<appActions.appActions>) => ({
-  goToProfile: () => {
-    // create app action which redirect to profile
-  },
   logOut: () => {
     dispatch(appActions.logOut());
     removeSessionTokenFromLS();
-  },
-  startStream: () => {
-    // crate start stream action
   }
 });
 
