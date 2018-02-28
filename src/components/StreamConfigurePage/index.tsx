@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as config from '../../config/';
 import './styles/index.less';
 
-import { connectToChatRoom, sendRoomMessage, socket } from '../../api/api';
+import { connectToChatRoom, leaveChatRoom, sendRoomMessage, socket } from '../../api/api';
 export interface IProps {
   leaveStream: () => void;
   emitMessage: (payload: any) => void;
@@ -73,6 +73,11 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     // remove HDW player during component unmounting
     const player: any = document.getElementById('player');
     player.remove();
+    const socketData = {
+      roomId: this.props.appData.selectedStreamId,
+      user: this.props.userData.name
+    };
+    leaveChatRoom(socketData);
     this.props.leaveStream();
   }
 
