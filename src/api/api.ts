@@ -17,6 +17,9 @@ export const confirm = (payload: any) => axios.post(`http://${API}/api/user/conf
 
 export const loadChannels = (payload: any) => axios.post(`http://${API}/api/channel/load`, payload);
 
+export const getStreamIdForCurrentUser = (payload: any) =>
+  axios.post(`http://${API}/api/channel/get_user_stream_key`, payload);
+
 export const connect = () => {
   socket = io.connect(`http://${API}`);
 };

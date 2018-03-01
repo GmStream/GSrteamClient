@@ -26,3 +26,21 @@ export function* stopStream(action: any): SagaIterator {
     }
   }
 }
+
+export function* getStreamKey(action: any): SagaIterator {
+  try {
+    const response: any = yield call(api.getStreamIdForCurrentUser, action.payload);
+    if (response.data.channelId) {
+      yield put({
+        payload: response.data.channelId,
+        type: actionTypes.CONNECTION_TO_STREAM
+      });
+    }
+  } catch (e) {
+    if (e.response.error) {
+      // here comes err action
+    } else {
+      window.console.log(e);
+    }
+  }
+}

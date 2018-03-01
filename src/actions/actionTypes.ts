@@ -68,3 +68,6 @@ export type APP_CLEAR_CHANNELS_DATA = typeof APP_CLEAR_CHANNELS_DATA;
 
 export const APP_SET_USER_DATA = 'APP_SET_USER_DATA';
 export type APP_SET_USER_DATA = typeof APP_SET_USER_DATA;
+
+export const GET_STREAM_KEY = 'GET_STREAM_KEY';
+export type GET_STREAM_KEY = typeof GET_STREAM_KEY;

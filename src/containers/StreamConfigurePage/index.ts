@@ -15,10 +15,12 @@ export interface IDispatchFromProps {
   startStream: () => void;
   emitMessage: (payload: any) => void;
   leaveStream: (payload: any) => void;
+  getStreamKey: (payload: any) => void;
 }
 
 // replace any with actions type
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  getStreamKey: (payload: any) => dispatch(appActions.getStreamKey(payload)),
   emitMessage: (payload: any) => dispatch(chatActions.emitChatMessage(payload)),
   leaveStream: (payload: any) => {
     dispatch(appActions.leaveStream());

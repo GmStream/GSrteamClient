@@ -6,6 +6,11 @@ export interface IUserSignInSuccess {
   payload: UserData;
 }
 
+export interface IGetStreamKey {
+  type: actionTypes.GET_STREAM_KEY;
+  payload: any;
+}
+
 export interface IUselectChannel {
   type: actionTypes.LEAVING_STREAM;
 }
@@ -69,7 +74,8 @@ export type appActions =
   | ILoadMoreChannels
   | IRefreshChannelsList
   | ISetUserData
-  | IStopStream;
+  | IStopStream
+  | IGetStreamKey;
 
 export type appActionsWithoutPayload =
   | IUserLogOut
@@ -89,6 +95,11 @@ export const selectChannel = (payload: string) => ({
 
 export const leaveStream = () => ({
   type: actionTypes.LEAVING_STREAM
+});
+
+export const getStreamKey = (payload: any) => ({
+  payload,
+  type: actionTypes.GET_STREAM_KEY
 });
 
 export const stopStream = (payload: any) => ({

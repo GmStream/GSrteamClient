@@ -20,6 +20,7 @@ export interface IProps {
   history: {
     push: (url: string) => void;
   };
+  getStreamKey: (payload: any) => void;
   userData: any;
 }
 
@@ -32,6 +33,10 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     if (!this.props.userData.loggedIn) {
       this.props.history.push('/');
     } else {
+      const userPayload = {
+        id: this.props.userData.id
+      };
+      this.props.getStreamKey(userPayload);
       connect();
       socket.on('message', (payload: any) => {
         const data = [payload];
