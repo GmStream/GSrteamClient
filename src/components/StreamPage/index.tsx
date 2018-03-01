@@ -50,6 +50,20 @@ class StreamPage extends React.PureComponent<IProps> {
     }
   }
 
+  public componentWillReceiveProps(nextProps: any) {
+    if (!nextProps.appData.isChannelLive) {
+      const offlineBlock: any = document.getElementById('offline');
+      offlineBlock.style = 'display:flex';
+      const onlineBlock: any = document.getElementById('online');
+      onlineBlock.style = 'display:none';
+    } else if (nextProps.appData.isChannelLive) {
+      const offlineBlock: any = document.getElementById('offline');
+      offlineBlock.style = 'display:none';
+      const onlineBlock: any = document.getElementById('online');
+      onlineBlock.style = 'display:flex';
+    }
+  }
+
   public componentDidMount() {
     const payload = {
       id: this.props.appData.selectedStreamId
@@ -103,21 +117,27 @@ class StreamPage extends React.PureComponent<IProps> {
       roomId: this.props.appData.selectedStreamId,
       user: this.props.userData.name
     };
-    if (this.props.userData.loggedIn) {
-      leaveChatRoom(socketData);
-      disconnect();
-    }
+
+    leaveChatRoom(socketData);
+    disconnect();
   }
 
   public render() {
     return (
       <div className="stream_page">
-        <div id="Pcontainer" className="player_container" />
-        <Chat
-          emmitMessage={this.sendMessage.bind(this)}
-          userName={this.props.userData.name}
-          messages={this.props.appData.chatMessages}
-        />
+        <div id="online">
+          <div className="stream_container">
+            <h1 className="stream_name">{this.props.appData.streamName}</h1>
+            <div id="Pcontainer" className="player_container" />
+          </div>
+          <Chat
+            emmitMessage={this.sendMessage.bind(this)}
+            userName={this.props.userData.name}
+            messages={this.props.appData.chatMessages}
+          />
+        </div>
+
+        <div id="offline">Channel offline.LastStream {this.props.appData.streamName}</div>
       </div>
     );
   }

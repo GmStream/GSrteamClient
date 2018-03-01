@@ -8,7 +8,9 @@ export interface IAppData {
     errorCode?: number;
     message?: string;
   };
+  isChannelLive?: boolean;
   selectedStreamId?: string;
+  streamName?: string;
   channels: any[];
   chatMessages?: any[];
 }

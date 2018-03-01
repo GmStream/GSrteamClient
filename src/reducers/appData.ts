@@ -47,6 +47,18 @@ export const appDataReducer = (
         ...state,
         channels: []
       };
+    case actionTypes.CLEAR_STREAM_DATA:
+      return {
+        ...state,
+        isChannelLive: false,
+        streamName: ''
+      };
+    case actionTypes.SET_STREAM_DATA:
+      return {
+        ...state,
+        isChannelLive: action.payload.isStreaming,
+        streamName: action.payload.streamName
+      };
 
     default:
       return state;

@@ -23,6 +23,7 @@ export function* streamWatcher(): SagaIterator {
   yield takeEvery(actionTypes.START_STREAM, streamSagas.startStream);
   yield takeEvery(actionTypes.STOP_STREAM, streamSagas.stopStream);
   yield takeEvery(actionTypes.GET_STREAM_KEY, streamSagas.getStreamKey);
+  yield takeEvery(actionTypes.CHECK_STREAM, streamSagas.check);
 }
 
 export function* channelWatcher(): SagaIterator {

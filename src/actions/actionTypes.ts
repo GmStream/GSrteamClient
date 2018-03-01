@@ -74,3 +74,9 @@ export type GET_STREAM_KEY = typeof GET_STREAM_KEY;
 
 export const CHECK_STREAM = 'CHECK_STREAM';
 export type CHECK_STREAM = typeof CHECK_STREAM;
+
+export const SET_STREAM_DATA = 'SET_STREAM_DATA';
+export type SET_STREAM_DATA = typeof SET_STREAM_DATA;
+
+export const CLEAR_STREAM_DATA = 'CLEAR_STREAM_DATA';
+export type CLEAR_STREAM_DATA = typeof CLEAR_STREAM_DATA;

@@ -40,26 +40,36 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
     };
   }
 
-  public componentWillMount() {
-    if (!this.props.userData.loggedIn) {
-      this.props.history.push('/');
-    } else {
-      const userPayload = {
-        email: this.props.userData.email
+  public componentWillReceiveProps(nextProps: any) {
+    if (
+      nextProps.appData.selectedStreamId !== this.props.appData.selectedStreamId &&
+      nextProps.appData.selectedStreamId !== ''
+    ) {
+      const socketData = {
+        roomId: nextProps.appData.selectedStreamId,
+        user: this.props.userData.name
       };
-      this.props.getStreamKey(userPayload);
-      connect();
+      connectToChatRoom(socketData);
+
       socket.on('message', (payload: any) => {
         const data = [payload];
         this.props.emitMessage(data);
         const chat: any = document.getElementById('chat');
         chat.scrollTop = chat.scrollHeight;
       });
-      const socketData = {
-        roomId: this.props.appData.selectedStreamId,
-        user: this.props.userData.name
+    }
+  }
+
+  public componentWillMount() {
+    if (!this.props.userData.loggedIn) {
+      this.props.history.push('/');
+    } else {
+      connect();
+      const userPayload = {
+        email: this.props.userData.email
       };
-      connectToChatRoom(socketData);
+      this.props.getStreamKey(userPayload);
+
       const startStreamButton: any = document.getElementById('NAVStreamLink');
       startStreamButton.classList.add('hidden');
     }
@@ -93,21 +103,20 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
     // remove HDW player during component unmounting
     const player: any = document.getElementById('player');
     player.remove();
-
-    const streamData = {
+    const payload = {
       id: this.props.appData.selectedStreamId
     };
-    if (this.props.userData.loggedIn) {
-      const socketData = {
-        roomId: this.props.appData.selectedStreamId,
-        user: this.props.userData.name
-      };
+    this.props.leaveStream(payload);
 
-      leaveChatRoom(socketData);
-      disconnect();
-      const startStreamButton: any = document.getElementById('NAVStreamLink');
-      startStreamButton.classList.remove('hidden');
-    }
+    const socketData = {
+      roomId: this.props.appData.selectedStreamId,
+      user: this.props.userData.name
+    };
+
+    leaveChatRoom(socketData);
+    disconnect();
+    const startStreamButton: any = document.getElementById('NAVStreamLink');
+    startStreamButton.classList.remove('hidden');
   }
 
   public changeStreamName(event: any) {

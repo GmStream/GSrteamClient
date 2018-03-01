@@ -24,6 +24,9 @@ export const connect = () => {
   socket = io.connect(`http://${API}`);
 };
 
+export const check = (payload: any) =>
+  axios.post(`http://${API}/api/channel/check_stream`, payload);
+
 export const startStream = (payload: any) =>
   axios.post(`http://${API}/api/stream/start_stream`, payload);
 
