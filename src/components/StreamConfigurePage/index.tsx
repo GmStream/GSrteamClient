@@ -3,7 +3,14 @@ import * as React from 'react';
 import * as config from '../../config/';
 import './styles/index.less';
 
-import { connectToChatRoom, leaveChatRoom, sendRoomMessage, socket } from '../../api/api';
+import {
+  connect,
+  connectToChatRoom,
+  disconnect,
+  leaveChatRoom,
+  sendRoomMessage,
+  socket
+} from '../../api/api';
 export interface IProps {
   leaveStream: () => void;
   emitMessage: (payload: any) => void;
@@ -23,6 +30,7 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     if (!this.props.userData.loggedIn) {
       this.props.history.push('/');
     } else {
+      connect();
       socket.on('message', (payload: any) => {
         const data = [payload];
         this.props.emitMessage(data);
@@ -79,6 +87,7 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     };
     leaveChatRoom(socketData);
     this.props.leaveStream();
+    disconnect();
   }
 
   public render() {
