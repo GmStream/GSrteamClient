@@ -6,6 +6,7 @@ function* rootSaga() {
   yield [fork(watchers.signInWatcher)];
   yield [fork(watchers.confrimWather)];
   yield [fork(watchers.channelWatcher)];
+  yield [fork(watchers.streamWatcher)];
 }
 
 export default rootSaga;

@@ -12,7 +12,8 @@ export interface IStateToProps {
 }
 
 export interface IDispatchFromProps {
-  startStream: () => void;
+  startStream: (payload: any) => void;
+  stopStream: (payload: any) => void;
   emitMessage: (payload: any) => void;
   leaveStream: (payload: any) => void;
   getStreamKey: (payload: any) => void;
@@ -20,13 +21,14 @@ export interface IDispatchFromProps {
 
 // replace any with actions type
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  getStreamKey: (payload: any) => dispatch(appActions.getStreamKey(payload)),
   emitMessage: (payload: any) => dispatch(chatActions.emitChatMessage(payload)),
+  getStreamKey: (payload: any) => dispatch(appActions.getStreamKey(payload)),
   leaveStream: (payload: any) => {
     dispatch(appActions.leaveStream());
     dispatch(appActions.stopStream(payload));
   },
-  startStream: () => window.console.log('start stream')
+  startStream: (payload: any) => dispatch(appActions.startStream(payload)),
+  stopStream: (payload: any) => dispatch(appActions.stopStream(payload))
 });
 
 const mapStateToProps = (state: any) => ({

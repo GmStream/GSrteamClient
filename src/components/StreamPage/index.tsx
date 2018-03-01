@@ -22,6 +22,7 @@ export interface IProps {
   history: {
     push: (url: string) => void;
   };
+  checkStreaming: (payload: any) => void;
 }
 
 class StreamPage extends React.PureComponent<IProps> {
@@ -50,6 +51,10 @@ class StreamPage extends React.PureComponent<IProps> {
   }
 
   public componentDidMount() {
+    const payload = {
+      id: this.props.appData.selectedStreamId
+    };
+    this.props.checkStreaming(payload);
     const div = document.createElement(`div`);
     div.setAttribute('id', 'player');
 

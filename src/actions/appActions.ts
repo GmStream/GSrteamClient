@@ -67,6 +67,16 @@ export interface ISetUserData {
   type: actionTypes.APP_SET_USER_DATA;
 }
 
+export interface IStartStream {
+  payload: any;
+  type: actionTypes.START_STREAM;
+}
+
+export interface ICheckStream {
+  payload: any;
+  type: actionTypes.CHECK_STREAM;
+}
+
 export type appActions =
   | IUserSignInSuccess
   | IChannelChose
@@ -75,7 +85,8 @@ export type appActions =
   | IRefreshChannelsList
   | ISetUserData
   | IStopStream
-  | IGetStreamKey;
+  | IGetStreamKey
+  | IStartStream;
 
 export type appActionsWithoutPayload =
   | IUserLogOut
@@ -88,6 +99,11 @@ export const logOut = () => ({
   type: actionTypes.USER_LOG_OUT
 });
 
+export const checkStreaming = (payload: any) => ({
+  payload,
+  type: actionTypes.CHECK_STREAM
+});
+
 export const selectChannel = (payload: string) => ({
   payload,
   type: actionTypes.CONNECTION_TO_STREAM
@@ -95,6 +111,11 @@ export const selectChannel = (payload: string) => ({
 
 export const leaveStream = () => ({
   type: actionTypes.LEAVING_STREAM
+});
+
+export const startStream = (payload: any) => ({
+  payload,
+  type: actionTypes.START_STREAM
 });
 
 export const getStreamKey = (payload: any) => ({

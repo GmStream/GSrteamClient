@@ -20,13 +20,24 @@ export interface IProps {
   history: {
     push: (url: string) => void;
   };
+  startStream: (payload: any) => void;
+  stopStream: (payload: any) => void;
   getStreamKey: (payload: any) => void;
   userData: any;
 }
 
-class StreamConfigurePage extends React.PureComponent<IProps> {
+export interface IState {
+  isStreamStarted: boolean;
+  streamName: string;
+}
+
+class StreamConfigurePage extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props);
+    this.state = {
+      isStreamStarted: false,
+      streamName: ''
+    };
   }
 
   public componentWillMount() {
@@ -34,7 +45,7 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
       this.props.history.push('/');
     } else {
       const userPayload = {
-        id: this.props.userData.id
+        email: this.props.userData.email
       };
       this.props.getStreamKey(userPayload);
       connect();
@@ -99,6 +110,36 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     }
   }
 
+  public changeStreamName(event: any) {
+    this.setState({
+      ...this.state,
+      streamName: event.target.value
+    });
+  }
+
+  public startStream() {
+    this.setState({
+      ...this.state,
+      isStreamStarted: true
+    });
+    const payload = {
+      id: this.props.appData.selectedStreamId,
+      name: this.state.streamName
+    };
+    this.props.startStream(payload);
+  }
+
+  public stopStream() {
+    this.setState({
+      ...this.state,
+      isStreamStarted: false
+    });
+    const paylaod = {
+      id: this.props.appData.selectedStreamId
+    };
+    this.props.stopStream(paylaod);
+  }
+
   public sendMessage(message: any) {
     const payload = { ...message, roomId: this.props.appData.selectedStreamId };
     sendRoomMessage(payload);
@@ -107,7 +148,34 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
   public render() {
     return (
       <div className="stream_page">
-        <div id="Pcontainer" className="player_container" />
+        <div className="stream_conf_container">
+          {!this.state.isStreamStarted && (
+            <input
+              className="stream_name_input"
+              type="text"
+              onChange={this.changeStreamName.bind(this)}
+              value={this.state.streamName}
+              disabled={this.state.isStreamStarted}
+            />
+          )}
+
+          {this.state.isStreamStarted && <h1 className="stream_name">{this.state.streamName}</h1>}
+
+          <div className="controlls_container">
+            <button
+              className="stream_start"
+              onClick={this.startStream.bind(this)}
+              disabled={this.state.isStreamStarted}
+            />
+            <button
+              className="stop_stream"
+              onClick={this.stopStream.bind(this)}
+              disabled={!this.state.isStreamStarted}
+            />
+          </div>
+          <div id="Pcontainer" className="player_container" />
+        </div>
+
         <Chat
           emmitMessage={this.sendMessage.bind(this)}
           userName={this.props.userData.name}

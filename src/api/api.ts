@@ -18,7 +18,7 @@ export const confirm = (payload: any) => axios.post(`http://${API}/api/user/conf
 export const loadChannels = (payload: any) => axios.post(`http://${API}/api/channel/load`, payload);
 
 export const getStreamIdForCurrentUser = (payload: any) =>
-  axios.post(`http://${API}/api/channel/get_user_stream_key`, payload);
+  axios.post(`http://${API}/api/stream/get_user_stream_key`, payload);
 
 export const connect = () => {
   socket = io.connect(`http://${API}`);
@@ -27,7 +27,7 @@ export const connect = () => {
 export const startStream = (payload: any) =>
   axios.post(`http://${API}/api/stream/start_stream`, payload);
 
-export const sstopStream = (payload: any) =>
+export const stopStream = (payload: any) =>
   axios.post(`http://${API}/api/stream/stop_stream`, payload);
 
 export const connectToChatRoom = (payload: any) => {

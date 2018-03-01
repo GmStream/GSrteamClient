@@ -71,3 +71,6 @@ export type APP_SET_USER_DATA = typeof APP_SET_USER_DATA;
 
 export const GET_STREAM_KEY = 'GET_STREAM_KEY';
 export type GET_STREAM_KEY = typeof GET_STREAM_KEY;
+
+export const CHECK_STREAM = 'CHECK_STREAM';
+export type CHECK_STREAM = typeof CHECK_STREAM;
