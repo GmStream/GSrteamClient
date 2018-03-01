@@ -3,7 +3,14 @@ import * as config from '../../config/';
 import { UserData } from '../../models/interfaces';
 import './styles/index.less';
 
-import { connectToChatRoom, leaveChatRoom, sendRoomMessage, socket } from '../../api/api';
+import {
+  connect,
+  connectToChatRoom,
+  disconnect,
+  leaveChatRoom,
+  sendRoomMessage,
+  socket
+} from '../../api/api';
 
 import Chat from '../Chat';
 
@@ -26,6 +33,7 @@ class StreamPage extends React.PureComponent<IProps> {
     if (!this.props.userData.loggedIn) {
       this.props.history.push('/');
     } else {
+      connect();
       socket.on('message', (payload: any) => {
         const data = [payload];
         this.props.emitMessage(data);
@@ -91,6 +99,7 @@ class StreamPage extends React.PureComponent<IProps> {
       user: this.props.userData.name
     };
     leaveChatRoom(socketData);
+    disconnect();
   }
 
   public render() {

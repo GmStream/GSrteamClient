@@ -27,10 +27,6 @@ class App extends React.PureComponent {
     super(props);
   }
 
-  public componentDidMount() {
-    // create and configure canvas
-  }
-
   public render() {
     return (
       <div className="wrapper">

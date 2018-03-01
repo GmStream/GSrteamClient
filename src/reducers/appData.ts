@@ -29,6 +29,7 @@ export const appDataReducer = (
     case actionTypes.LEAVING_STREAM:
       return {
         ...state,
+        chatMessages: [],
         selectedStreamId: ''
       };
     case actionTypes.APP_REFRESH_CHANNELS_LIST:

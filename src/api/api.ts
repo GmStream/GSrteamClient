@@ -7,7 +7,7 @@ import * as io from 'socket.io-client';
 
 // fix socket connection (HT)
 // err: connct with every import
-export const socket = io.connect(`http://${API}`);
+export let socket: SocketIOClient.Socket;
 
 export const signUp = (payload: any) => axios.post(`http://${API}/api/user/signup`, payload);
 
@@ -16,6 +16,11 @@ export const signIn = (payload: any) => axios.post(`http://${API}/api/user/signi
 export const confirm = (payload: any) => axios.post(`http://${API}/api/user/confirm`, payload);
 
 export const loadChannels = (payload: any) => axios.post(`http://${API}/api/channel/load`, payload);
+
+export const connect = () => {
+  socket = io.connect(`http://${API}`);
+  window.console.log('asdasd');
+};
 
 export const startStream = (payload: any) =>
   axios.post(`http://${API}/api/stream/start_stream`, payload);
@@ -33,4 +38,8 @@ export const sendRoomMessage = (payload: any) => {
 
 export const leaveChatRoom = (payload: any) => {
   socket.emit('leave_room', payload);
+};
+
+export const disconnect = () => {
+  socket.emit('disconnect');
 };
