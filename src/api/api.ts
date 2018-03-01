@@ -19,7 +19,6 @@ export const loadChannels = (payload: any) => axios.post(`http://${API}/api/chan
 
 export const connect = () => {
   socket = io.connect(`http://${API}`);
-  window.console.log('asdasd');
 };
 
 export const startStream = (payload: any) =>

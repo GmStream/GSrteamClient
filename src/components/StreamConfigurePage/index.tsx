@@ -3,6 +3,8 @@ import * as React from 'react';
 import * as config from '../../config/';
 import './styles/index.less';
 
+import Chat from '../Chat';
+
 import {
   connect,
   connectToChatRoom,
@@ -34,13 +36,14 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
       socket.on('message', (payload: any) => {
         const data = [payload];
         this.props.emitMessage(data);
+        const chat: any = document.getElementById('chat');
+        chat.scrollTop = chat.scrollHeight;
       });
       const socketData = {
         roomId: this.props.appData.selectedStreamId,
         user: this.props.userData.name
       };
       connectToChatRoom(socketData);
-      // save to local storage id
       const startStreamButton: any = document.getElementById('NAVStreamLink');
       startStreamButton.classList.add('hidden');
     }
@@ -74,15 +77,16 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     // remove HDW player during component unmounting
     const player: any = document.getElementById('player');
     player.remove();
-    const socketData = {
-      roomId: this.props.appData.selectedStreamId,
-      user: this.props.userData.name
-    };
-    leaveChatRoom(socketData);
+
     const streamData = {
       id: this.props.appData.selectedStreamId
     };
     if (this.props.userData.loggedIn) {
+      const socketData = {
+        roomId: this.props.appData.selectedStreamId,
+        user: this.props.userData.name
+      };
+
       leaveChatRoom(socketData);
       disconnect();
       const startStreamButton: any = document.getElementById('NAVStreamLink');
@@ -90,10 +94,20 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     }
   }
 
+  public sendMessage(message: any) {
+    const payload = { ...message, roomId: this.props.appData.selectedStreamId };
+    sendRoomMessage(payload);
+  }
+
   public render() {
     return (
       <div className="stream_page">
         <div id="Pcontainer" className="player_container" />
+        <Chat
+          emmitMessage={this.sendMessage.bind(this)}
+          userName={this.props.userData.name}
+          messages={this.props.appData.chatMessages}
+        />
       </div>
     );
   }
