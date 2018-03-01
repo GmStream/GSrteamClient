@@ -34,17 +34,25 @@ export const stopStream = (payload: any) =>
   axios.post(`http://${API}/api/stream/stop_stream`, payload);
 
 export const connectToChatRoom = (payload: any) => {
-  socket.emit('join_room', payload);
+  if (socket) {
+    socket.emit('join_room', payload);
+  }
 };
 
 export const sendRoomMessage = (payload: any) => {
-  socket.emit('room_message', payload);
+  if (socket) {
+    socket.emit('room_message', payload);
+  }
 };
 
 export const leaveChatRoom = (payload: any) => {
-  socket.emit('leave_room', payload);
+  if (socket) {
+    socket.emit('leave_room', payload);
+  }
 };
 
 export const disconnect = () => {
-  socket.emit('disconnect');
+  if (socket) {
+    socket.emit('disconnect');
+  }
 };
