@@ -14,11 +14,15 @@ export interface IStateToProps {
 export interface IDispatchFromProps {
   startStream: () => void;
   emitMessage: (payload: any) => void;
+  leaveStream: (payload: any) => void;
 }
 
 // replace any with actions type
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   emitMessage: (payload: any) => dispatch(chatActions.emitChatMessage(payload)),
+  leaveStream: (payload: any) => {
+    dispatch(appActions.leaveStream());
+  },
   startStream: () => window.console.log('start stream')
 });
 

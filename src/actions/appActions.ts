@@ -34,6 +34,11 @@ export interface ILeaveStream {
   type: actionTypes.LEAVING_STREAM;
 }
 
+export interface IStopStream {
+  type: actionTypes.STOP_STREAM;
+  payload: any;
+}
+
 export interface ILoadMoreChannels {
   type: actionTypes.APP_LOAD_MORE_CHANNELS;
   payload: {
@@ -63,7 +68,8 @@ export type appActions =
   | ILoadChannels
   | ILoadMoreChannels
   | IRefreshChannelsList
-  | ISetUserData;
+  | ISetUserData
+  | IStopStream;
 
 export type appActionsWithoutPayload =
   | IUserLogOut
@@ -83,6 +89,11 @@ export const selectChannel = (payload: string) => ({
 
 export const leaveStream = () => ({
   type: actionTypes.LEAVING_STREAM
+});
+
+export const stopStream = (payload: any) => ({
+  payload,
+  type: actionTypes.STOP_STREAM
 });
 
 export const continueSession = (payload: UserData) => ({

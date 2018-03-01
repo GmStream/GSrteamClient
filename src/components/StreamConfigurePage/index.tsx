@@ -12,7 +12,7 @@ import {
   socket
 } from '../../api/api';
 export interface IProps {
-  leaveStream: () => void;
+  leaveStream: (payload: any) => void;
   emitMessage: (payload: any) => void;
   appData: any;
   history: {
@@ -41,6 +41,8 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
       };
       connectToChatRoom(socketData);
       // save to local storage id
+      const startStreamButton: any = document.getElementById('NAVStreamLink');
+      startStreamButton.classList.add('hidden');
     }
   }
 
@@ -86,8 +88,13 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
       user: this.props.userData.name
     };
     leaveChatRoom(socketData);
-    this.props.leaveStream();
+    const streamData = {
+      id: this.props.appData.selectedStreamId
+    };
+    this.props.leaveStream(streamData);
     disconnect();
+    const startStreamButton: any = document.getElementById('NAVStreamLink');
+    startStreamButton.classList.remove('hidden');
   }
 
   public render() {

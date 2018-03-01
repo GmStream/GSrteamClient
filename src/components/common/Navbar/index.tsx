@@ -33,7 +33,7 @@ class Navbar extends React.Component<IProps> {
             </Link>
           </div>
           <div className="SB_container ">
-            <Link to="/stream_configure">
+            <Link to="/stream_configure" id="NAVStreamLink">
               <div className="SStart btn_flag">Stream Now</div>
             </Link>
           </div>
