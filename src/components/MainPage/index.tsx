@@ -38,11 +38,9 @@ class MainPage extends React.Component<IProps> {
   public componentWillMount() {
     if (!this.props.userData.loggedIn) {
       this.props.history.push('/');
+    } else {
+      this.props.loadChannelsHandler({ limit: LIMIT_OF_CHANNELS });
     }
-  }
-
-  public componentDidMount() {
-    this.props.loadChannelsHandler({ limit: LIMIT_OF_CHANNELS });
   }
 
   public componentWillUnmount() {
