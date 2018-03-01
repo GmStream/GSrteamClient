@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   emitMessage: (payload: any) => dispatch(chatActions.emitChatMessage(payload)),
   leaveStream: (payload: any) => {
     dispatch(appActions.leaveStream());
+    dispatch(appActions.stopStream(payload));
   },
   startStream: () => window.console.log('start stream')
 });

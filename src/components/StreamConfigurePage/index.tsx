@@ -53,20 +53,11 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     const container: any = document.getElementById('Pcontainer');
     container.appendChild(div);
 
-    let screenWidth = window.screen.width;
-    let height = screenWidth / 1.5;
-
-    if (screenWidth > 630) {
-      screenWidth = 630;
-      height = 360;
-    }
-
     const evalString = `
     hdwplayer({
       id       : 'player',
       swf      : '../hdwPlayer/player/player.swf',
-      width    : ${screenWidth},
-      height   : ${height},
+      
       type     : 'rtmp',
       streamer : '${config.STREAM_SERVER}',
       video    : '${this.props.appData.selectedStreamId}',
@@ -91,10 +82,12 @@ class StreamConfigurePage extends React.PureComponent<IProps> {
     const streamData = {
       id: this.props.appData.selectedStreamId
     };
-    this.props.leaveStream(streamData);
-    disconnect();
-    const startStreamButton: any = document.getElementById('NAVStreamLink');
-    startStreamButton.classList.remove('hidden');
+    if (this.props.userData.loggedIn) {
+      leaveChatRoom(socketData);
+      disconnect();
+      const startStreamButton: any = document.getElementById('NAVStreamLink');
+      startStreamButton.classList.remove('hidden');
+    }
   }
 
   public render() {

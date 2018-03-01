@@ -98,8 +98,10 @@ class StreamPage extends React.PureComponent<IProps> {
       roomId: this.props.appData.selectedStreamId,
       user: this.props.userData.name
     };
-    leaveChatRoom(socketData);
-    disconnect();
+    if (this.props.userData.loggedIn) {
+      leaveChatRoom(socketData);
+      disconnect();
+    }
   }
 
   public render() {
