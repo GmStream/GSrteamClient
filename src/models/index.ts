@@ -4,10 +4,7 @@ export interface IForm {
 }
 
 export interface IAppData {
-  error?: {
-    errorCode?: number;
-    message?: string;
-  };
+  error?: string;
   isChannelLive?: boolean;
   selectedStreamId?: string;
   streamName?: string;

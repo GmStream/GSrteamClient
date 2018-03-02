@@ -80,3 +80,6 @@ export type SET_STREAM_DATA = typeof SET_STREAM_DATA;
 
 export const CLEAR_STREAM_DATA = 'CLEAR_STREAM_DATA';
 export type CLEAR_STREAM_DATA = typeof CLEAR_STREAM_DATA;
+
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+export type CLEAR_ERROR = typeof CLEAR_ERROR;

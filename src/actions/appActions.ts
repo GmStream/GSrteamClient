@@ -35,6 +35,10 @@ export interface ILoadChannels {
   };
 }
 
+export interface IClearError {
+  type: actionTypes.CLEAR_ERROR;
+}
+
 export interface ILeaveStream {
   type: actionTypes.LEAVING_STREAM;
 }
@@ -104,7 +108,8 @@ export type appActionsWithoutPayload =
   | IAppConnectionError
   | IUselectChannel
   | ICleacrChannelsData
-  | IClearStreamData;
+  | IClearStreamData
+  | IClearError;
 
 export const logOut = () => ({
   type: actionTypes.USER_LOG_OUT

@@ -27,7 +27,7 @@ export interface IConfirm {
   payload: ConfPayload;
 }
 
-export type FromActions = ISignUp | ISignUpErr | ISignInErr | IConfirm | ISignIn;
+export type FormActions = ISignUp | ISignUpErr | ISignInErr | IConfirm | ISignIn;
 
 export const signUp = (payload: SignUpData): ISignUp => ({
   payload,

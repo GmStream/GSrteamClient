@@ -2,6 +2,7 @@ import { startStream } from 'api/api';
 import * as actionTypes from '../actions/actionTypes';
 import { appActions, appActionsWithoutPayload } from '../actions/appActions';
 import { ChatAction } from '../actions/chatActions';
+import { FormActions } from '../actions/formActions';
 import { appDataInitial } from '../models';
 
 const initialState: appDataInitial = {
@@ -16,7 +17,7 @@ const initialState: appDataInitial = {
 
 export const appDataReducer = (
   state = initialState,
-  action: appActions | appActionsWithoutPayload | ChatAction
+  action: appActions | appActionsWithoutPayload | ChatAction | FormActions
 ) => {
   switch (action.type) {
     case actionTypes.APP_CONNECTION_ERROR:
@@ -59,7 +60,16 @@ export const appDataReducer = (
         isChannelLive: action.payload.isStreaming,
         streamName: action.payload.streamName
       };
-
+    case actionTypes.SIGN_IN_ERROR:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case actionTypes.CLEAR_ERROR:
+      return {
+        ...state,
+        error: ''
+      };
     default:
       return state;
   }

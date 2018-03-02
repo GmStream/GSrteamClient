@@ -75,9 +75,27 @@ body {
 }
 
 .submit_button {
-}
+  width: 100%;
 
-.submit_button:hover {
+  border: none;
+
+  color: white;
+
+  font-family: 'Jura', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  user-select: none;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.01);
+    color: white;
+  }
 }
 
 .btn_blue {
@@ -86,4 +104,12 @@ body {
 
 .btn_purple {
   background: linear-gradient(to bottom, #5355c2, #35187b);
+}
+.error_container {
+  display: flex;
+  justify-content: center;
+
+  padding: 5px 0px;
+
+  color: red;
 }

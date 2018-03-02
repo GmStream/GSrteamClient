@@ -1,12 +1,14 @@
 import { connect, Dispatch } from 'react-redux';
 import * as appActions from '../../actions/appActions';
-import { FromActions } from '../../actions/formActions';
+import { FormActions } from '../../actions/formActions';
 import * as formActions from '../../actions/formActions';
 import SignInForm from '../../components/SignInForm';
 import { ConfPayload, SignInData, UserData } from '../../models/interfaces';
 
 export interface IStateToProps {
   formState: any;
+  userData: any;
+  appData: any;
 }
 
 export interface IDispatchFromProps {
@@ -16,7 +18,7 @@ export interface IDispatchFromProps {
   setUserData: (payload: any) => void;
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<FromActions>) => ({
+const mapDispatchToProps = (dispatch: Dispatch<FormActions>) => ({
   continueSession: (payload: UserData) => dispatch(appActions.continueSession(payload)),
   handleEmailConfirmation: (payload: ConfPayload) =>
     dispatch(formActions.emailConfirmation(payload)),
@@ -25,6 +27,7 @@ const mapDispatchToProps = (dispatch: Dispatch<FromActions>) => ({
 });
 
 const mapStateToProps = (state: any) => ({
+  appData: state.appData,
   formState: state.formState,
   userData: state.userData
 });

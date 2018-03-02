@@ -16,6 +16,7 @@ export interface IState {
 }
 
 export interface IProps {
+  appData: any;
   signIn: (payload: SignInData) => void;
   location: {
     search: any;
@@ -124,6 +125,9 @@ class SignUpForm extends React.Component<IProps, IState> {
         </div>
         <div className="logo" />
         <div className="sign_in_form">
+          {this.props.appData.error && (
+            <div className="error_container">{this.props.appData.error}</div>
+          )}
           {page >= 1 && (
             <div>
               <p className="control has-icons-left">
@@ -162,7 +166,7 @@ class SignUpForm extends React.Component<IProps, IState> {
 
           {page >= 3 && (
             <div className="submit_bar">
-              <button className="button submit_button" type="submit" onClick={this.submit}>
+              <button className="button submit_button btn_blue" type="submit" onClick={this.submit}>
                 Sign In
               </button>
             </div>
@@ -170,6 +174,9 @@ class SignUpForm extends React.Component<IProps, IState> {
           <div className="link_bar">
             <Link to="/sign_up" className="form_link">
               create Gstream account
+            </Link>
+            <Link to="/request_restore_pass" className="form_link">
+              Have problem with sign in?
             </Link>
           </div>
         </div>
