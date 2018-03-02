@@ -70,6 +70,16 @@ export const appDataReducer = (
         ...state,
         error: ''
       };
+    case actionTypes.SIGN_UP_SUCCES:
+      return {
+        ...state,
+        successData: action.payload
+      };
+    case actionTypes.CLEAR_SUCCESS_DATA:
+      return {
+        ...state,
+        successData: ''
+      };
     default:
       return state;
   }

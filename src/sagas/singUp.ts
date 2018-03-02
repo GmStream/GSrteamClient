@@ -7,6 +7,16 @@ import * as api from '../api/api';
 export function* signUp(action: FormActions): SagaIterator {
   try {
     const response: any = yield call(api.signUp, action.payload);
+    if (response.status === 200) {
+      yield put({
+        payload: 'Check your email for confirmation',
+        type: actionTypes.SIGN_UP_SUCCES
+      });
+      yield delay(5000) as any;
+      yield put({
+        type: actionTypes.CLEAR_SUCCESS_DATA
+      });
+    }
   } catch (e) {
     if (e.response.error) {
       yield put({

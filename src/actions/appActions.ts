@@ -48,6 +48,10 @@ export interface IStopStream {
   payload: any;
 }
 
+export interface IClearSuccessData {
+  type: actionTypes.CLEAR_SUCCESS_DATA;
+}
+
 export interface ILoadMoreChannels {
   type: actionTypes.APP_LOAD_MORE_CHANNELS;
   payload: {
@@ -85,6 +89,11 @@ export interface IClearStreamData {
   type: actionTypes.CLEAR_STREAM_DATA;
 }
 
+export interface ISuccessData {
+  payload: string;
+  type: actionTypes.SIGN_UP_SUCCES;
+}
+
 export interface ISetStreamData {
   payload: any;
   type: actionTypes.SET_STREAM_DATA;
@@ -100,7 +109,8 @@ export type appActions =
   | IStopStream
   | IGetStreamKey
   | IStartStream
-  | ISetStreamData;
+  | ISetStreamData
+  | ISuccessData;
 
 export type appActionsWithoutPayload =
   | IUserLogOut
@@ -109,7 +119,8 @@ export type appActionsWithoutPayload =
   | IUselectChannel
   | ICleacrChannelsData
   | IClearStreamData
-  | IClearError;
+  | IClearError
+  | IClearSuccessData;
 
 export const logOut = () => ({
   type: actionTypes.USER_LOG_OUT

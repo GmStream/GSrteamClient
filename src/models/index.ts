@@ -5,6 +5,7 @@ export interface IForm {
 
 export interface IAppData {
   error?: string;
+  successData?: string;
   isChannelLive?: boolean;
   selectedStreamId?: string;
   streamName?: string;

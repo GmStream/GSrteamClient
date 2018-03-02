@@ -170,6 +170,9 @@ class SignUpForm extends React.Component<IProps, IState> {
             {this.props.appData.error && (
               <div className="error_container">{this.props.appData.error}</div>
             )}
+            {this.props.appData.successData && (
+              <div className="success_container">{this.props.appData.successData}</div>
+            )}
             {page >= 1 && (
               <div>
                 <p className="control has-icons-left">

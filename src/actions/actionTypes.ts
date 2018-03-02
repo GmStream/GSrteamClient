@@ -83,3 +83,6 @@ export type CLEAR_STREAM_DATA = typeof CLEAR_STREAM_DATA;
 
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 export type CLEAR_ERROR = typeof CLEAR_ERROR;
+
+export const CLEAR_SUCCESS_DATA = 'CLEAR_SUCCESS_DATA';
+export type CLEAR_SUCCESS_DATA = typeof CLEAR_SUCCESS_DATA;
