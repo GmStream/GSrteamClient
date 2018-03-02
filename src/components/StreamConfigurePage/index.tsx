@@ -57,6 +57,21 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
         const chat: any = document.getElementById('chat');
         chat.scrollTop = chat.scrollHeight;
       });
+
+      const evalString = `
+      hdwplayer({
+        id       : 'player',
+        swf      : '../hdwPlayer/player/player.swf',
+        type     : 'rtmp',
+        streamer : '${config.STREAM_SERVER}',
+        video    : '${this.props.appData.selectedStreamId}',
+        autoStart: 'true'
+      });
+   `;
+      // eval used for config HDW player
+  
+      // tslint:disable-next-line:no-eval
+      eval(evalString)
     }
   }
 
@@ -82,21 +97,7 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
     const container: any = document.getElementById('Pcontainer');
     container.appendChild(div);
 
-    const evalString = `
-    hdwplayer({
-      id       : 'player',
-      swf      : '../hdwPlayer/player/player.swf',
-      
-      type     : 'rtmp',
-      streamer : '${config.STREAM_SERVER}',
-      video    : '${this.props.appData.selectedStreamId}',
-      autoStart: 'true'
-    });
- `;
-    // eval used for config HDW player
-
-    // tslint:disable-next-line:no-eval
-    eval(evalString);
+   ;
   }
 
   public componentWillUnmount() {

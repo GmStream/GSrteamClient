@@ -75,13 +75,7 @@ class StreamPage extends React.PureComponent<IProps> {
     const container: any = document.getElementById('Pcontainer');
     container.appendChild(div);
 
-    let screenWidth = window.screen.width;
-    let height = screenWidth / 1.5;
-
-    if (screenWidth > 768) {
-      screenWidth = 630;
-      height = 360;
-    }
+   
 
     // get id from local storage if !this.props.appData.selectedStreamId
 
@@ -89,8 +83,6 @@ class StreamPage extends React.PureComponent<IProps> {
     hdwplayer({
       id       : 'player',
       swf      : '../hdwPlayer/player/player.swf',
-      width    : ${screenWidth},
-      height   : ${height},
       type     : 'rtmp',
       streamer : '${config.STREAM_SERVER}',
       video    : '${this.props.appData.selectedStreamId}',
