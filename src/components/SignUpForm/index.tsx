@@ -18,6 +18,7 @@ export interface IState {
 }
 
 export interface IProps {
+  appData: any;
   signUp: (payload: SignUpData) => void;
 }
 
@@ -133,6 +134,10 @@ class SignUpForm extends React.Component<IProps, IState> {
       password: this.state.password
     };
     this.props.signUp(payload);
+    this.setState({
+      ...this.state,
+      page: 6
+    });
   };
 
   public cancel = () => {
@@ -162,6 +167,9 @@ class SignUpForm extends React.Component<IProps, IState> {
         )}
         {page < 7 && (
           <div className="sign_up_form">
+            {this.props.appData.error && (
+              <div className="error_container">{this.props.appData.error}</div>
+            )}
             {page >= 1 && (
               <div>
                 <p className="control has-icons-left">
@@ -255,7 +263,7 @@ class SignUpForm extends React.Component<IProps, IState> {
             {page >= 6 && (
               <div className="submit_bar">
                 <button
-                  className="button submit_blue_button"
+                  className="submit_button btn_blue sing_up_submit"
                   type="submit"
                   onClick={this.showModal}
                 >
@@ -273,11 +281,22 @@ class SignUpForm extends React.Component<IProps, IState> {
 
         {page >= 7 && (
           <div className="modal_submit">
-            // here will be policy of service
+            <ul>
+              <li>User should never send his own stream key to others.</li>
+              <li>
+                Streaming aviable only over real time messaging protocol.We advice you to use OBS
+                for share your schreen.
+              </li>
+              <li>Do not provoke other people, be polite.</li>
+            </ul>
             <button className="button is-danger" type="submit" onClick={this.cancel}>
               Cancel
             </button>
-            <button className="button is-success" type="submit" onClick={this.submit}>
+            <button
+              className="button btn_blue btn_modal_submit"
+              type="submit"
+              onClick={this.submit}
+            >
               Confirm
             </button>
           </div>

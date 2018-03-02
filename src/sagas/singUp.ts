@@ -1,10 +1,10 @@
-import { SagaIterator } from 'redux-saga';
+import { delay, SagaIterator } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import * as actionTypes from '../actions/actionTypes';
-import { FromActions } from '../actions/formActions';
+import { FormActions } from '../actions/formActions';
 import * as api from '../api/api';
 
-export function* signUp(action: FromActions): SagaIterator {
+export function* signUp(action: FormActions): SagaIterator {
   try {
     const response: any = yield call(api.signUp, action.payload);
   } catch (e) {
@@ -14,19 +14,34 @@ export function* signUp(action: FromActions): SagaIterator {
         type: actionTypes.SIGN_UP_ERROR
       });
     } else {
-      window.console.log(e);
+      if (e.response.status === 422) {
+        yield put({
+          payload: e.response.data.Error,
+          type: actionTypes.SIGN_IN_ERROR
+        });
+        yield delay(5000) as any;
+        yield put({
+          type: actionTypes.CLEAR_ERROR
+        });
+      } else {
+        window.console.log(e);
+      }
     }
   }
 }
 
-export function* confirmation(action: FromActions): SagaIterator {
+export function* confirmation(action: FormActions): SagaIterator {
   try {
     const response: any = yield call(api.confirm, action.payload);
   } catch (e) {
     if (e.response.error) {
       yield put({
-        payload: e.response.error,
+        payload: e.response.data.Error,
         type: actionTypes.USER_CONFIRMATION_ERROR
+      });
+      yield delay(5000) as any;
+      yield put({
+        type: actionTypes.CLEAR_ERROR
       });
     } else {
       window.console.log(e);
