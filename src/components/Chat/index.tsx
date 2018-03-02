@@ -46,7 +46,7 @@ export class Chat extends React.Component<IProps, IState> {
         <div className="input_box">
           <input
             type="text"
-            className="MInput"
+            className="MInput black_input "
             onChange={this.inputHandler.bind(this)}
             value={this.state.draftMessage}
             onKeyPress={(event: any) => {
@@ -55,7 +55,7 @@ export class Chat extends React.Component<IProps, IState> {
               }
             }}
           />
-          <button className="send_button" onClick={this.sendMessage.bind(this)}>
+          <button className="send_button btn_blue" onClick={this.sendMessage.bind(this)}>
             send
           </button>
         </div>

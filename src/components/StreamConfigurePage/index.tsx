@@ -43,7 +43,8 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
   public componentWillReceiveProps(nextProps: any) {
     if (
       nextProps.appData.selectedStreamId !== this.props.appData.selectedStreamId &&
-      nextProps.appData.selectedStreamId !== ''
+      nextProps.appData.selectedStreamId !== '' &&
+      nextProps.appData.selectedStreamId
     ) {
       const socketData = {
         roomId: nextProps.appData.selectedStreamId,
@@ -64,14 +65,14 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
         swf      : '../hdwPlayer/player/player.swf',
         type     : 'rtmp',
         streamer : '${config.STREAM_SERVER}',
-        video    : '${this.props.appData.selectedStreamId}',
+        video    : '${nextProps.appData.selectedStreamId}',
         autoStart: 'true'
       });
    `;
       // eval used for config HDW player
-  
+
       // tslint:disable-next-line:no-eval
-      eval(evalString)
+      eval(evalString);
     }
   }
 
@@ -96,8 +97,6 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
 
     const container: any = document.getElementById('Pcontainer');
     container.appendChild(div);
-
-   ;
   }
 
   public componentWillUnmount() {
@@ -161,7 +160,8 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
         <div className="stream_conf_container">
           {!this.state.isStreamStarted && (
             <input
-              className="stream_name_input"
+              className="stream_name_input black_input"
+              placeholder="input stream name"
               type="text"
               onChange={this.changeStreamName.bind(this)}
               value={this.state.streamName}
@@ -173,17 +173,23 @@ class StreamConfigurePage extends React.PureComponent<IProps, IState> {
 
           <div className="controlls_container">
             <button
-              className="stream_start"
+              className="stream_start btn_blue"
               onClick={this.startStream.bind(this)}
               disabled={this.state.isStreamStarted}
-            />
+            >
+              Start stream
+            </button>
             <button
-              className="stop_stream"
+              className="stop_stream btn_purple"
               onClick={this.stopStream.bind(this)}
               disabled={!this.state.isStreamStarted}
-            />
+            >
+              Stop stream
+            </button>
           </div>
-          <div id="Pcontainer" className="player_container" />
+          <div className="player_container ">
+            <div id="Pcontainer" />
+          </div>
         </div>
 
         <Chat

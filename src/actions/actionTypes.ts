@@ -86,3 +86,12 @@ export type CLEAR_ERROR = typeof CLEAR_ERROR;
 
 export const CLEAR_SUCCESS_DATA = 'CLEAR_SUCCESS_DATA';
 export type CLEAR_SUCCESS_DATA = typeof CLEAR_SUCCESS_DATA;
+
+export const CHANGE_IMAGE = 'CHANGE_IMAGE';
+export type CHANGE_IMAGE = typeof CHANGE_IMAGE;
+
+export const CHANGE_STREAM_KEY = 'CHANGE_STREAM_KEY';
+export type CHANGE_STREAM_KEY = typeof CHANGE_STREAM_KEY;
+
+export const UPDATE_USER_IMAGE = 'UPDATE_USER_IMAGE';
+export type UPDATE_USER_IMAGE = typeof UPDATE_USER_IMAGE;

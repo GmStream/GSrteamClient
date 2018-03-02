@@ -39,6 +39,9 @@ export const connectToChatRoom = (payload: any) => {
   }
 };
 
+export const changeImage = (payload: any) =>
+  axios.post(`http://${API}/api/channel/change_image`, payload);
+
 export const sendRoomMessage = (payload: any) => {
   if (socket) {
     socket.emit('room_message', payload);

@@ -125,6 +125,56 @@
   top: 3.5px;
   left: 50%;
   margin-left: -83px;
+
+  &--collapsed {
+    height: 52px;
+    position: fixed;
+    top: 0px;
+    right: 0;
+  }
+}
+
+.collapsed_menu {
+  position: fixed;
+  top: 52px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .collapsed_button {
+    width: 100%;
+    text-align: center;
+    height: 30px;
+    color: white;
+
+    font-family: 'Jura', sans-serif;
+    font-size: 16px;
+    border: none;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  .collapsed_link {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    background-color: black;
+    color: white;
+
+    font-family: 'Jura', sans-serif;
+    font-size: 16px;
+
+    &:visited {
+      color: white;
+    }
+
+    &:hover {
+      color: white;
+    }
+  }
 }
 
 .NAVbrand_container {

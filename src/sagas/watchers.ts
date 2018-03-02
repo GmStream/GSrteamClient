@@ -28,4 +28,6 @@ export function* streamWatcher(): SagaIterator {
 
 export function* channelWatcher(): SagaIterator {
   yield takeEvery(actionTypes.APP_LOAD_CHANNELS, channelSagas.loadChanels);
+
+  yield takeEvery(actionTypes.CHANGE_IMAGE, channelSagas.changeImage);
 }

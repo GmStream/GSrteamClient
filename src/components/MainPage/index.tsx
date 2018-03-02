@@ -47,6 +47,13 @@ class MainPage extends React.Component<IProps> {
     this.props.clearChannelsData();
   }
 
+  public loadMore() {
+    this.props.loadChannelsHandler({
+      limit: LIMIT_OF_CHANNELS,
+      skip: this.props.appData.channels.length
+    });
+  }
+
   public render() {
     return (
       <div className="Mp_wrapper">
@@ -59,7 +66,11 @@ class MainPage extends React.Component<IProps> {
           <div className="tiles_container">
             <Layout tiles={this.props.appData.channels} handler={this.tileHandler} />
           </div>
-          <div className="Mp_tiles_footer" />
+          <div className="Mp_tiles_footer">
+            <button className="load_more_button btn_purple" onClick={this.loadMore.bind(this)}>
+              Load More
+            </button>
+          </div>
         </div>
       </div>
     );

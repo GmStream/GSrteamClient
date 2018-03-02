@@ -75,8 +75,6 @@ class StreamPage extends React.PureComponent<IProps> {
     const container: any = document.getElementById('Pcontainer');
     container.appendChild(div);
 
-   
-
     // get id from local storage if !this.props.appData.selectedStreamId
 
     const evalString = `
@@ -129,7 +127,9 @@ class StreamPage extends React.PureComponent<IProps> {
           />
         </div>
 
-        <div id="offline">Channel offline.LastStream {this.props.appData.streamName}</div>
+        <div id="offline">
+          <h1>offline</h1>
+        </div>
       </div>
     );
   }

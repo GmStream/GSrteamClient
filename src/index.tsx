@@ -15,6 +15,7 @@ import rootSaga from './sagas';
 import Footer from './components/common/Footer';
 import Navbar from './components/common/Navbar';
 import Main from './containers/MainPage';
+import Profile from './containers/Profile';
 import SignIn from './containers/SignIn/';
 import SignUp from './containers/SignUp/';
 import Stream from './containers/Stream';
@@ -38,6 +39,7 @@ class App extends React.PureComponent {
             <Route path="/channel" component={Stream} />
             <Route path="/main" component={Main} />
             <Route path="/stream_configure" component={StreamConfigurePage} />
+            <Route path="/account" component={Profile} />
           </Switch>
         </div>
         <Footer />

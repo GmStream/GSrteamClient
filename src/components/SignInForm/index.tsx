@@ -175,9 +175,9 @@ class SignUpForm extends React.Component<IProps, IState> {
             <Link to="/sign_up" className="form_link">
               create Gstream account
             </Link>
-            <Link to="/request_restore_pass" className="form_link">
+            {/* <Link to="/request_restore_pass" className="form_link">
               Have problem with sign in?
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

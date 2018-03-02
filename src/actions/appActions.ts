@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 
 export interface IUserSignInSuccess {
   type: actionTypes.SIGN_IN_SUCCES;
-  payload: UserData;
+  payload: any;
 }
 
 export interface IGetStreamKey {
@@ -75,6 +75,11 @@ export interface ISetUserData {
   type: actionTypes.APP_SET_USER_DATA;
 }
 
+export interface IChangeImage {
+  payload: any;
+  type: actionTypes.CHANGE_IMAGE;
+}
+
 export interface IStartStream {
   payload: any;
   type: actionTypes.START_STREAM;
@@ -99,6 +104,11 @@ export interface ISetStreamData {
   type: actionTypes.SET_STREAM_DATA;
 }
 
+export interface IUpdateImage {
+  payload: string;
+  type: actionTypes.UPDATE_USER_IMAGE;
+}
+
 export type appActions =
   | IUserSignInSuccess
   | IChannelChose
@@ -110,7 +120,9 @@ export type appActions =
   | IGetStreamKey
   | IStartStream
   | ISetStreamData
-  | ISuccessData;
+  | ISuccessData
+  | IChangeImage
+  | IUpdateImage;
 
 export type appActionsWithoutPayload =
   | IUserLogOut
@@ -138,6 +150,11 @@ export const endStream = () => ({
 export const selectChannel = (payload: string) => ({
   payload,
   type: actionTypes.CONNECTION_TO_STREAM
+});
+
+export const changeImage = (payload: any) => ({
+  payload,
+  type: actionTypes.CHANGE_IMAGE
 });
 
 export const leaveStream = () => ({
