@@ -13,23 +13,14 @@
     "test:coverage": "jest -coverage"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/test-shim.js",
-      "<rootDir>/test-setup.js"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
+    "setupFiles": ["<rootDir>/test-shim.js", "<rootDir>/test-setup.js"],
+    "moduleFileExtensions": ["ts", "tsx", "js"],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
       "^.+\\.jsx$": "babel-jest",
       "^.+\\.js$": "babel-jest"
     },
-    "testMatch": [
-      "**/spec/*.(ts|tsx|js)"
-    ]
+    "testMatch": ["**/spec/*.(ts|tsx|js)"]
   },
   "devDependencies": {
     "@types/classnames": "^2.2.3",

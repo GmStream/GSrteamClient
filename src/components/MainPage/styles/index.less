@@ -40,65 +40,119 @@
   flex-direction: column;
   justify-content: center;
 
-  min-height: 600px;
-  background-color: rgb(44, 25, 75);
-}
-
-.Mp_tiles::after {
-  content: '';
-  position: absolute;
-  top: 0px;
-  left: 0;
-
-  height: 160px;
-  width: 100%;
-
-  box-shadow: 0px -6px 9px 0px rgb(189, 102, 189);
-
-  background: linear-gradient(to bottom, rgba(109, 101, 254, 0.6), rgba(127, 43, 187, 0));
-}
-
-.Mp_tiles::before {
-  content: '';
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-
-  height: 160px;
-  width: 100%;
-
-  z-index: 1;
-
-  background: linear-gradient(to top, rgba(109, 101, 254, 0.6), rgba(127, 43, 187, 0));
-}
-
-.Mp_wrapper {
-  // background-color: #170528;
+  min-height: 100vh;
 }
 
 .Mp_header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
   width: 100%;
   height: 100vh;
 
   padding-top: 50px;
   background: url('../../../images/mp_header_background.jpg');
 
-  .decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .preview_container {
+    display: flex;
+    flex-direction: row;
 
-    width: 100%;
+    margin:15px auto auto auto;
+    max-height: 200px;
+    max-width: 1000px;
+
+    .preview_1{
+      position: relative;
+
+      height: 150px;
+      min-width: 270px;
+      overflow: hidden;
+
+      video{
+        position: fixed;
+        height: 150px;
+      }
+    }
+
+    .preview_3{
+      position: relative;
+
+      height: 150px;
+      min-width: 270px;
+      overflow: hidden;
+
+      video{
+        position: fixed;
+        height: 150px;
+      }
+    }
+
+    .preview_2{
+      position: relative;
+
+      height: 150px;
+      min-width: 270px;
+      overflow: hidden;
+
+      video{
+        position: fixed;
+        height: 150px;
+      }
+    }
+  }
+
+
+
+  .MP_header_text{
+    margin: auto;
+
+    background:url('../../../images/header_hero_big.png');
+    background-repeat: no-repeat;
+    height: 500px;
+    width:1000px;
+
+    .head_text{
+      padding-left: 250px;
+      font-family: 'Merriweather', serif;
+      font-size: 40px;
+      color:white;
+    }
+
+    .join_button{
+      min-width:290px;
+      margin:30px 0 0 600px;
+      padding:7px 35px;
+      border: none;
+
+      background: linear-gradient(to bottom, #326be4, #100122);
+
+      color: white;
+      font-family: 'Jura', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      text-shadow: 5px 3px 2px #373737;
+      text-align: center;
+      text-transform: uppercase;
+
+    }
+
+    .info_text {
+      padding-left: 250px;
+      font-family: 'Merriweather', serif;
+      font-size: 25px;
+      color:white;
+    }
   }
 }
 
 .Mp_header::after {
   content: '';
   position: absolute;
-  top: 50px;
+  top: 0px;
   left: 0;
 
-  height: 100%;
+  height: 100vh;
   width: 200px;
   background: url('../../../images/edge-triangles.png') no-repeat;
 }
@@ -106,10 +160,10 @@
 .Mp_header::before {
   content: '';
   position: absolute;
-  top: 50px;
+  top: 0px;
   right: 0;
 
-  height: 100%;
+  height: 100vh;
   width: 200px;
 
   background: url('../../../images/edge-triangles.png') no-repeat;

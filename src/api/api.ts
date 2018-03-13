@@ -5,8 +5,6 @@ const API = 'localhost:2999';
 
 import * as io from 'socket.io-client';
 
-// fix socket connection (HT)
-// err: connct with every import
 export let socket: SocketIOClient.Socket;
 
 export const signUp = (payload: any) => axios.post(`http://${API}/api/user/signup`, payload);

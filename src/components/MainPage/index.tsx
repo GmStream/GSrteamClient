@@ -35,6 +35,15 @@ class MainPage extends React.Component<IProps> {
     }
   }
 
+  public scrollToChannels = () => {
+    const height:any = window.screen.height;
+    window.scroll({
+      behavior: 'smooth',
+      left: 0,
+      top: height
+    });
+  }
+
   public componentWillMount() {
     if (!this.props.userData.loggedIn) {
       this.props.history.push('/');
@@ -58,10 +67,32 @@ class MainPage extends React.Component<IProps> {
     return (
       <div className="Mp_wrapper">
         <div className="Mp_header">
-          <div className="decoration" />
-          here something will be
+          <div className="preview_container">
+            <div className="preview_1">
+              <video autoPlay loop muted>
+                <source src="http://localhost:2999/1.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div className="preview_2">
+              <video autoPlay loop muted>
+                 <source src="http://localhost:2999/3.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div className="preview_3">
+              <video autoPlay loop muted>
+                <source src="http://localhost:2999/3.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <div className="lich_hero"/>
+
+          <div className="MP_header_text">
+            <p className="head_text">Welcome to the Game Stream service.</p>
+            <p className='info_text'>Here you can enjoy with stream from you streamers!</p>
+            <button className="join_button" onClick={this.scrollToChannels}>See Channels</button>
+          </div>
         </div>
-        <div className="Mp_tiles">
+        <div className="Mp_tiles" >
           <div className="Mp_tiles_header" />
           <div className="tiles_container">
             <Layout tiles={this.props.appData.channels} handler={this.tileHandler} />
